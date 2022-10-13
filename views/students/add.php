@@ -10,9 +10,6 @@
                 <label>First Name</label>
                 <input name="first_name" placeholder="Enter First Name">
             </li>
-            EBSCOhost - printed on 10/13/2022 10:54 AM via UNIVERSITY OF EAST LONDON. All use subject to https://www.ebsco.com/terms-of-use
-            Chapter 4
-            [ 97 ]
             <li>
                 <label>Last Name</label>
                 <input name="last_name" placeholder="Enter Last Name">
