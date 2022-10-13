@@ -1,6 +1,8 @@
 <?php
 class Bootstrap{
     public function __construct(){
+
+//        exit("HI");
         $url = $_GET['url'];
         $url = explode("/",$url);
         //should be logged
