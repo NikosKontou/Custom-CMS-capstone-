@@ -1,4 +1,7 @@
 <?php
-$url = $_GET['url'];
-echo '"'.$url.'"'.' is the requested page';
+require_once("config.php");
+function __autoload($class) {
+    require LIBRARY . $class .".php";
+}
+$app = new Bootstrap();
 ?>
