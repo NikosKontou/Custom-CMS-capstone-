@@ -1,8 +1,7 @@
 <?php
 require_once("config.php");
-function __autoload($class) {
-    require LIBRARY . $class .".php";
-}
+require_once("lib/DBConnect.php");
+require_once("lib/session.php");
 
 ob_start();
 session_start();
@@ -28,7 +27,22 @@ session_start();
     $msg = '';
 
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-
+        $sql = 'SELECT user_name FROM users ';
+        $res = $conn->query($sql);
+        foreach ($res as $row) {
+            if ($_POST['username']==$row["user_name"]){
+                $flag =true;
+                echo "success";
+            }
+        }
+        if (!isset($flag)){
+            echo("failed to log in");
+            session_destroy();
+        } else{
+            $_SESSION['valid'] = true;
+            $_SESSION['timeout'] = time();
+            $_SESSION['username'] = $row["user_name"];
+        }
 
     }
     ?>
