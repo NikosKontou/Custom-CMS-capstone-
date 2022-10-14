@@ -1,15 +1,12 @@
-<?php
-require_once("config.php");
-
-ob_start();
-session_start();
-?>
-
-
-
 <html lang = "en">
 
 <head>
+    <?php
+    require_once("config.php");
+
+    ob_start();
+    session_start();
+    ?>
     <title>Log in page</title>
     <link href = "css/bootstrap.min.css" rel = "stylesheet">
 
