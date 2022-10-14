@@ -8,7 +8,6 @@
     session_start();
     ?>
     <title>Log in page</title>
-    <link href = "css/bootstrap.min.css" rel = "stylesheet">
 
 
 </head>
