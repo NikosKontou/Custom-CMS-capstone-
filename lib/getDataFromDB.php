@@ -1,13 +1,13 @@
 <?php
  class getDataFromDB
+
 {
 
-    public function getArticles()
+    public static function getArticles()
     {
-        $sql = 'SELECT * FROM articles ';
-        if (!empty($conn)) {
-            $res = $conn->query($sql);
-        }
-        return $res;
+        $db= DBConnect::setConnection();
+        $select = $db->prepare('SELECT * FROM articles');
+        $select->execute();
+        return $select->fetchAll(PDO::FETCH_ASSOC);
     }
 }

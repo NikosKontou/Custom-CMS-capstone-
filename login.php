@@ -23,16 +23,16 @@
 <div class = "container form-signin">
 
     <?php
+    $db= DBConnect::setConnection();
     $msg = '';
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-        $sql = 'SELECT user_name FROM users ';
-        if (!empty($conn)) {
-            $res = $conn->query($sql);
-        }
-        foreach ($res as $row) {
+        $select = $db->prepare('SELECT user_name FROM users');
+        $select->execute();
+        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
             if ($_POST['username']==$row["user_name"]){
                 $flag =true;
                 echo "success";
+                $_SESSION['username'] = $row["user_name"];
             }
         }
         if (!isset($flag)){
@@ -41,7 +41,7 @@
         } else{
             $_SESSION['valid'] = true;
             $_SESSION['timeout'] = time();
-            $_SESSION['username'] = $row["user_name"];
+
         }
 
     }

@@ -14,7 +14,8 @@
 <body>
 
 <?php
-var_dump(getDataFromDB());
+$result = getDataFromDB::getArticles();
+print_r($result);
 
 ?>
 
