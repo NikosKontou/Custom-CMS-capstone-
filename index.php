@@ -11,14 +11,14 @@
 
 </head>
 
-<body>
 
 <?php
 $result = getDataFromDB::getArticles();
-print_r($result);
+
+echo $twig->render('index.html.twig',['articles'=>$result]);
+
 
 ?>
 
 
-</body>
 </html>
