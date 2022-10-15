@@ -30,6 +30,7 @@
                 $flag =true;
                 echo "success";
                 $_SESSION['username'] = $row["user_name"];
+                $_SESSION['id'] = $row['id'];
             }
         }
         if (!isset($flag)){
