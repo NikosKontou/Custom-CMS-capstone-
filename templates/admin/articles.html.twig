@@ -1,0 +1,10 @@
+<body>
+{% for article in articles %}
+
+{#    send the GET to article.php so it can be retrieved by the database and display the correct article #}
+<div class="row"><a href="../article.php?id={{ article['id'] }}">
+        view {{ article['title'] }} </a>
+</div>
+
+{% endfor %}
+</body>
