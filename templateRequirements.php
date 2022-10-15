@@ -1,3 +1,4 @@
+<!--initialise the twig requirements and the $twig object-->
 <?php
 require __DIR__ . '/vendor/autoload.php';
 use Twig\Environment;

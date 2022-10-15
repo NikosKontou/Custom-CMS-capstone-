@@ -1,4 +1,5 @@
 <?php
+//helper class for session, may get deleted later
 class Session{
     public static function init(){
         session_start();
