@@ -16,8 +16,6 @@
 
 <?php
 
- echo $twig->render('firstTemplate.html.twig',['user'=>"Heloooo"]);
-
 ?>
 <div class = "container form-signin">
 
