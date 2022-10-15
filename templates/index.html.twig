@@ -1,7 +1,11 @@
-
-
 <body>
 {% for article in articles %}
-{{ article['title'] }}
+    <img src="../assets/images/{{ article['header_image'] }}" />
+    <h2><a href="article.php?id={{ article['id'] }}">
+        {{ article['title'] }} </a>
+    </h2>
+    <p>
+        {{ article['body'] }}
+    </p>
 {% endfor %}
 </body>

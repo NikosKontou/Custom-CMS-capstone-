@@ -14,7 +14,6 @@
 
 <?php
 $result = getDataFromDB::getArticles();
-
 echo $twig->render('index.html.twig',['articles'=>$result]);
 
 
