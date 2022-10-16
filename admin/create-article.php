@@ -21,13 +21,10 @@
         insertDataToDB::createArticle($_POST['title'], $_POST['body']);
     }
 
-    //get the article from the DB
-
-        $result = getDataFromDB::getSingleArticle($_GET['id']);
-
 //var_dump($result[0]->body);exit;
-//display it in the template
-        echo $twig->render('admin/article-edit.html.twig',['article'=>$result[0], 'phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
+//get the same template used to update an article but pass no article data
+    //phpself is important so that the php file can get the post request from the twig template
+        echo $twig->render('admin/article-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
 
 
     ?>

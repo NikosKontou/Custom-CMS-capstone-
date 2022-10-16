@@ -7,7 +7,7 @@ class updateDataDromDb
     {   try{
         //set an article
         $db= DBConnect::setConnection();
-        $update = $db->prepare("update articles set title = ' :title',body= ':body'  where id = :id");
+        $update = $db->prepare("update articles set title = :title,body= :body where id = :id");
 
         $update->bindParam('title', $title, PDO::PARAM_STR);
         $update->bindParam('body', $body, PDO::PARAM_STR);
