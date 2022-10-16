@@ -4,7 +4,7 @@
 <div class="row">
         <div class="col">view <a href="../article.php?id={{ article['id'] }}">
          {{ article['title'] }} </a> </div>
-        <div class="deleteItem"><a href="../admin/articles.php?deleteId=?{{ article['id'] }}">delete item</a> </div>
+        <div class="col deleteItem"><a href="../admin/articles.php?deleteId={{ article['id'] }}">delete item</a> </div>
         <div class="col">edit <a href="../admin/article-edit.php?id={{ article['id'] }}">{{ article['title'] }}</a> </div>
 </div>
 
