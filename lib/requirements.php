@@ -3,7 +3,7 @@
 require_once("DBConnect.php");
 require_once("session.php");
 //create
-
+require_once("insertDataToDB.php");
 //read
 require_once("getDataFromDB.php");
 //update
