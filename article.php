@@ -1,9 +1,6 @@
 <?php
 require_once("config.php");
 
-ob_start();
-session_start();
-
 ?>
 
 <?php

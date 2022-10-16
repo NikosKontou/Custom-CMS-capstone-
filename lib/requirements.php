@@ -7,4 +7,8 @@ require_once("updateDataFromDB.php");
 
 require("dependencies/css.php");
 require("dependencies/js.php");
+
+//start the session
+ob_start();
+session_start();
 ?>

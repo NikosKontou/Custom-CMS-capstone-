@@ -3,9 +3,7 @@
 <head>
     <?php
     require_once("../config.php");
-    ob_start();
-    //start the session
-    session_start();
+    require_once ("../lib/userControl.php");
     ?>
     <title>Articles managment</title>
 
