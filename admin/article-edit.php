@@ -10,8 +10,8 @@
 
 
 </head>
-
-
+<body>
+<div class="container">
 <?php
 
 $db = DBConnect::setConnection();
@@ -30,10 +30,8 @@ if (isset($_GET['id'])){
     echo $twig->render('admin/article-edit.html.twig',['article'=>$result[0], 'phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
 }
 
-
-
-
 ?>
-
+</div>
+</body>
 
 </html>

@@ -11,9 +11,6 @@
 
 <body>
 
-<?php
-
-?>
 <div class = "container form-signin">
 
     <?php
@@ -45,7 +42,10 @@
     }
     ?>
 </div> <!-- /container -->
-
+<?php
+//call the header template
+echo $twig->render('header.html.twig', ['username'=>$_SESSION['username'], 'userID'=>$_SESSION['id']]);
+?>
 <div class = "container">
 
 <!--html form with post request to the same page (login.php)-->

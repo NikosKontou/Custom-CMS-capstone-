@@ -1,7 +1,16 @@
-<?php
-require_once("config.php");
+<html lang = "en">
 
-?>
+<head>
+    <?php
+    require_once("config.php");
+    ?>
+    <title>Log in page</title>
+
+
+</head>
+
+<body>
+<div class="container">
 
 <?php
 //call the header template
@@ -11,5 +20,8 @@ $result = getDataFromDB::getSingleArticle($_GET['id']);
 //pass the article obect to the template
 echo $twig->render('article.html.twig',['article'=>$result[0]]);
 
-
 ?>
+</div>
+</body>
+</html>
+
