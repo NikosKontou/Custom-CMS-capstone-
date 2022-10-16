@@ -14,10 +14,17 @@
 
 
 <?php
+
+$db = DBConnect::setConnection();
+
+if (isset($_POST['editArticle']) ) {
+    exit("article edited!");
+}
 //get the article from the DB
 $result = getDataFromDB::getSingleArticle();
+
 //display it in the template
-echo $twig->render('admin/article-edit.html.twig',['article'=>$result]);
+echo $twig->render('admin/articles.html.twig',['articles'=>$result, 'phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
 
 
 ?>

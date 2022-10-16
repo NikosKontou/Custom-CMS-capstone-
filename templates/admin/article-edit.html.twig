@@ -1,4 +1,4 @@
-<form>
+<form role = "form" action = "{{phpSelf}}" method = "post">
     <div class="form-group">
         <label for="articleTitle">Title</label>
         <input type="text" class="form-control" id="articleTitle" value="{{ article.title }}">
@@ -9,4 +9,5 @@
         <label for="bodyText">Body</label>
         <textarea class="form-control" id="bodyText" rows="10" value="{{ article.body }}"></textarea>
     </div>
+    <button name = "editArticle" type="submit" class="btn btn-primary">Save changes</button>
 </form>
