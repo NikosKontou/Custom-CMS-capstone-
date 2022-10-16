@@ -21,4 +21,13 @@
          return $select->fetchAll(PDO::FETCH_OBJ);
      }
 
+     public static function userLogIn($username){
+         $db= DBConnect::setConnection();
+         $select = $db->prepare('SELECT id, user_password FROM users where user_name = :username');
+         $select->bindParam('username', $username, PDO::PARAM_STR);
+         $select->execute();
+         return $select->fetchAll(PDO::FETCH_OBJ);
+
+     }
+
 }

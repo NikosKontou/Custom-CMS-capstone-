@@ -25,21 +25,25 @@
     $msg = '';
     //check if provided creds are correct
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-        $select = $db->prepare('SELECT * FROM users');
-        $select->execute();
-        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+            $result = getDataFromDB::userLogIn($_POST['username']);
+//            var_dump($result);exit();
             //if credentials are matching save user data in the SESSION
-            if ($_POST['username']==$row["user_name"]){
-                $msg= "success";
-                $_SESSION['username'] = $row["user_name"];
-                $_SESSION['id'] = $row['id'];
+        if(isset($result[0])){
+            if ($_POST['password']==$result[0]->user_password) {
+
+                $msg = "success";
+                //prevent session hijacking by refreshing the session id and adding a cookie
+                session_regenerate_id();
+                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['id'] = $result[0]->id;
+            } else{
+                $msg= "wrong credentials";
             }
-        }
-        //else destroy the SESSION
-        if (!isset($_SESSION['id'])){
-            echo("failed to log in");
+        } else{
+            $msg= "wrong credentials";
             session_destroy();
         }
+
 
     }
     ?>

@@ -7,7 +7,8 @@ class updateDataDromDb
     {   try{
         //set an article
         $db= DBConnect::setConnection();
-        $update = $db->prepare('update articles set title = '. $title.',body= '.$body.'  where id = '.$id);
+        $update = $db->prepare('update articles set title = "'. $title.'",body= "'.$body.'"  where id = '.$id);
+//        var_dump($update);exit();
         $update->execute();
 
         // echo a message to say the UPDATE succeeded
