@@ -12,19 +12,26 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="main_nav">
+                <form role="form" action="{{ phpSelf }}" method="post">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
                     <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+{#                    if the username is set, the user is loged in and can see relative information#}
+                    {% if username != null %}
                     <li class="nav-item dropdown">
-{#                        display username and user data#}
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Hi {{ username}}  </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#"> My profile</a></li>
-                            <li><a class="dropdown-item" href="#"> Log out </a></li>
+                            <button name="logOut" type="submit" class="btn btn-primary">Log out</button>
                             <li><a class="dropdown-item" href="#"> id is {{ userID}} </a></li>
                             </ul>
                     </li>
+{#                        else display the log in prompt#}
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="/login.php"> Log in </a></li>
+                    {% endif %}
                 </ul>
+                </form>
             </div> <!-- navbar-collapse.// -->
         </div> <!-- container-fluid.// -->
     </nav>
