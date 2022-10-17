@@ -25,7 +25,6 @@ echo $twig->render('index.html.twig', ['articles' => $result]);
 </body>
 </html>
 
-
 <?php
 if (isset($_POST['logOut'])) {
    session_destroy();
