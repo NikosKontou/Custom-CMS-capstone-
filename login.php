@@ -44,7 +44,7 @@
 </div> <!-- /container -->
 <?php
 //call the header template
-echo $twig->render('header.html.twig', ['username'=>$_SESSION['username'], 'userID'=>$_SESSION['id']]);
+echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'username' => (isset($_SESSION['username'])) ? $_SESSION['username'] : null, 'userID' => (isset($_SESSION['id'])) ? $_SESSION['id'] : null]);
 ?>
 <div class = "container">
 
@@ -69,3 +69,10 @@ echo $twig->render('header.html.twig', ['username'=>$_SESSION['username'], 'user
 
 </body>
 </html>
+
+<?php
+if (isset($_POST['logOut'])) {
+    session_destroy();
+    header("location:../index.php");
+}
+?>

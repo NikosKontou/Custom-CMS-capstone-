@@ -12,7 +12,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="main_nav">
-                <form role="form" action="{{ phpSelf }}" method="post">
+
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
                     <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
@@ -22,8 +22,10 @@
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Hi {{ username}}  </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#"> My profile</a></li>
+                            <form role="form" action="{{ phpSelf }}" method="post">
                             <button name="logOut" type="submit" class="btn btn-primary">Log out</button>
                             <li><a class="dropdown-item" href="#"> id is {{ userID}} </a></li>
+                            </form>
                             </ul>
                     </li>
 {#                        else display the log in prompt#}
@@ -31,7 +33,7 @@
                         <li class="nav-item"><a class="nav-link" href="/login.php"> Log in </a></li>
                     {% endif %}
                 </ul>
-                </form>
+
             </div> <!-- navbar-collapse.// -->
         </div> <!-- container-fluid.// -->
     </nav>
