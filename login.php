@@ -19,12 +19,13 @@
     $msg = '';
     //check if provided creds are correct
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
+        $pass = $_POST['password'];
             $result = getDataFromDB::userLogIn($_POST['username']);
 //            var_dump($result);exit();
             //if credentials are matching save user data in the SESSION
         if(isset($result[0])){
-            $encrypted_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            if ($encrypted_password==$result[0]->user_password) {
+
+            if (password_verify($pass, $result[0]->user_password)) {
 
                 $msg = "success";
                 //prevent session hijacking by refreshing the session id and adding a cookie
@@ -32,10 +33,10 @@
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['id'] = $result[0]->id;
             } else{
-                $msg= "wrong credentials";
+                $msg= "wrong pass";
             }
         } else{
-            $msg= "wrong credentials";
+            $msg= "not set";
             session_destroy();
         }
 

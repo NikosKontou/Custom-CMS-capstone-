@@ -17,26 +17,9 @@
     $db= DBConnect::setConnection();
     //initialize $msg
     $msg = '';
-    //check if provided creds are correct
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-        $result = getDataFromDB::userLogIn($_POST['username']);
-//            var_dump($result);exit();
-        //if credentials are matching save user data in the SESSION
-        if(isset($result[0])){
-            if ($_POST['password']==$result[0]->user_password) {
+        $result = insertDataToDB::userREgister($_POST['username'], $_POST['password']);
 
-                $msg = "success";
-                //prevent session hijacking by refreshing the session id and adding a cookie
-                session_regenerate_id();
-                $_SESSION['username'] = $_POST['username'];
-                $_SESSION['id'] = $result[0]->id;
-            } else{
-                $msg= "wrong credentials";
-            }
-        } else{
-            $msg= "wrong credentials";
-            session_destroy();
-        }
 
 
     }

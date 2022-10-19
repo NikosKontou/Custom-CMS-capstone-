@@ -20,11 +20,11 @@ class insertDataToDB
     }
 
     public static function userREgister($username, $password){
-        $encrypted_password = password_hash( $password,PASSWORD_DEFAULT);
+        $encrypted_password = password_hash( $password,PASSWORD_BCRYPT);
         $db= DBConnect::setConnection();
         $select = $db->prepare('insert into users (user_name, user_password) values (:username, :password)');
         $select->bindParam('username', $username, PDO::PARAM_STR);
-        $select->bindParam('password',$encrypted_password , PDO::PARAM_STR);
+        $select->bindParam('password',$encrypted_password);
         $select->execute();
         return $select->fetchAll(PDO::FETCH_OBJ);
 
