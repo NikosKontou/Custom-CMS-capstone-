@@ -19,12 +19,11 @@
     $msg = '';
     //check if provided creds are correct
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-            $result = getDataFromDB::userLogIn($_POST['username']);
+        $result = getDataFromDB::userLogIn($_POST['username']);
 //            var_dump($result);exit();
-            //if credentials are matching save user data in the SESSION
+        //if credentials are matching save user data in the SESSION
         if(isset($result[0])){
-            $encrypted_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            if ($encrypted_password==$result[0]->user_password) {
+            if ($_POST['password']==$result[0]->user_password) {
 
                 $msg = "success";
                 //prevent session hijacking by refreshing the session id and adding a cookie
@@ -49,7 +48,7 @@ echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PH
 ?>
 <div class = "container">
 
-<!--html form with post request to the same page (login.php)-->
+    <!--html form with post request to the same page (login.php)-->
     <form role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
         <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
         <div class="form-group">
@@ -61,11 +60,9 @@ echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PH
             <label for="password">Password</label>
             <input type="password" name="password" class="form-control" id="password" placeholder="Password">
         </div>
-        <button name = "login" type="submit" class="btn btn-primary">Login</button>
+        <button name = "login" type="submit" class="btn btn-primary">register</button>
     </form>
-    <div>
-    you do not have an account? <a href="register.php">Register here</a>
-    </div>
+
 
 </div>
 
