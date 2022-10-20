@@ -50,7 +50,7 @@ echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PH
 <div class = "container">
 
     <?php
-    //call the log in template with htmlspecialchars so that user input does not contain special character
+    //call the log in template with htmlspecialchars so that user input does not contain special characters
     echo $twig->render('login.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'msg' => (isset($msg)) ? $msg : null]);
 
     ?>
