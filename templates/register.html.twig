@@ -1,5 +1,6 @@
 <!--html form with post request to the page register.php-->
-<form role = "form" action = "{{ phpSelf }}" method = "post">
+{#if javascript form validation fails, the user is presented with the appropriate message#}
+<form role = "form" action = "{{ phpSelf }}" method = "post" onsubmit="return validatePassword()">
     <h4 class = "form-signin-heading">
         {% if msg is not empty %}
         <div class="error">{{ msg }}</div>
@@ -25,17 +26,20 @@
 
 <script>
     let password = document.getElementById("password")
-        , passwordConfirm = document.getElementById("confirm_password");
+        , passwordConfirm = document.getElementById("passwordConfirm");
 
     function validatePassword(){
+
         if(password.value != passwordConfirm.value) {
             passwordConfirm.setCustomValidity("Passwords Don't Match");
+            return false;
         } else {
             //setting custom validity to an empty string means that the field is valid
             passwordConfirm.setCustomValidity('');
+            return true;
         }
     }
-
+    //call the function on password change
     password.onchange = validatePassword;
     passwordConfirm.onkeyup = validatePassword;
 </script>

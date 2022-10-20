@@ -2,6 +2,7 @@
 //call important files that almost every page needs
 require_once("DBConnect.php");
 require_once("session.php");
+require_once("dataValidation.php");
 //create
 require_once("insertDataToDB.php");
 //read

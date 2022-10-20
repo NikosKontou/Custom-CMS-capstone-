@@ -17,7 +17,9 @@
     $db= DBConnect::setConnection();
 
     if (isset($_POST['register']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-        $result = insertDataToDB::userREgister($_POST['username'], $_POST['password']);
+        $cleanUserName = dataValidation::rmvSpclChars($_POST['username']);
+        $cleanPassword = dataValidation::rmvSpclChars($_POST['password']);
+        $result = insertDataToDB::userREgister($cleanUserName, $cleanPassword);
 
     }
     ?>
@@ -30,7 +32,7 @@ echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PH
 
     <?php
     //call the register template
-    echo $twig->render('login.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'username' => (isset($msg)) ? $msg : null]);
+    echo $twig->render('register.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'msg' => (isset($msg)) ? $msg : null]);
 
     ?>
 

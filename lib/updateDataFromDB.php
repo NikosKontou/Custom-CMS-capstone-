@@ -3,7 +3,7 @@ class updateDataDromDb
 //every update database job should be stored here and called via the class as a static function
 {
 
-    public static function setSingleArticle($id, $title, $body)
+    public static function setSingleArticle($id, $title, $body): void
     {   try{
         //set an article
         $db= DBConnect::setConnection();

@@ -17,18 +17,19 @@
     $db= DBConnect::setConnection();
     //check if provided creds are correct
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-        $pass = $_POST['password'];
-            $result = getDataFromDB::userLogIn($_POST['username']);
+        $cleanUserName = dataValidation::rmvSpclChars($_POST['username']);
+        $cleanPassword = dataValidation::rmvSpclChars($_POST['password']);
+        $result = getDataFromDB::userLogIn($cleanUserName);
 //            var_dump($result);exit();
-            //if credentials are matching save user data in the SESSION
+        //if credentials are matching save user data in the SESSION
         if(isset($result[0])){
 
-            if (password_verify($pass, $result[0]->user_password)) {
+            if (password_verify($cleanPassword, $result[0]->user_password)) {
 
                 $msg = "success";
                 //prevent session hijacking by refreshing the session id and adding a cookie
                 session_regenerate_id();
-                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['username'] = $cleanUserName;
                 $_SESSION['id'] = $result[0]->id;
             } else{
                 $msg= "wrong pass";
@@ -48,11 +49,11 @@ echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PH
 ?>
 <div class = "container">
 
-<?php
-//call the log in template
-echo $twig->render('login.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'username' => (isset($msg)) ? $msg : null]);
+    <?php
+    //call the log in template with htmlspecialchars so that user input does not contain special character
+    echo $twig->render('login.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'msg' => (isset($msg)) ? $msg : null]);
 
-?>
+    ?>
 
 </div>
 
