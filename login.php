@@ -15,8 +15,6 @@
 
     <?php
     $db= DBConnect::setConnection();
-    //initialize $msg
-    $msg = '';
     //check if provided creds are correct
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
         $pass = $_POST['password'];
@@ -50,23 +48,11 @@ echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PH
 ?>
 <div class = "container">
 
-<!--html form with post request to the same page (login.php)-->
-    <form role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
-        <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
-        <div class="form-group">
-            <label for="username">username</label>
-            <input type="username" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="username help" class="form-text text-muted">Log in to access more admin options.</small>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-        </div>
-        <button name = "login" type="submit" class="btn btn-primary">Login</button>
-    </form>
-    <div>
-    you do not have an account? <a href="register.php">Register here</a>
-    </div>
+<?php
+//call the log in template
+echo $twig->render('login.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'username' => (isset($msg)) ? $msg : null]);
+
+?>
 
 </div>
 
