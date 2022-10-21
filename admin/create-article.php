@@ -16,7 +16,7 @@
 
     $db = DBConnect::setConnection();
     echo"<script>console.log('test')</script>";
-    if (isset($_POST['createArticle']) && isset($_POST['title']) && isset($_POST['body'])) {
+    if (isset($_POST['createArticle']) && isset($_POST['title']) && isset($_POST['body']) &&isset($_POST['categorySelector'])) {
 
         $target_dir = "../assets/images/";
         $target_file = $target_dir . basename($_FILES["imageToUpload"]["name"]);
@@ -49,7 +49,7 @@
             echo"<script>console.log('generic error')</script>";
         }
 
-        insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars( basename( $_FILES["imageToUpload"]["name"])));
+        insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars( basename( $_FILES["imageToUpload"]["name"])), $_POST['categorySelector'],$_SESSION['id']);
     }
 
     //var_dump($result[0]->body);exit;
