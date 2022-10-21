@@ -43,5 +43,23 @@ class updateDataDromDb
     }
     }
 
+    public static function setCategory($id, $cat_name): void
+    {   try{
+        //set an article
+        $db= DBConnect::setConnection();
+        $update = $db->prepare("update categories set category_name = :category_name where id = :id");
+
+        $update->bindParam('category_name', $cat_name, PDO::PARAM_STR);
+        $update->bindParam('id', $id, PDO::PARAM_INT);
+//        var_dump($update);exit();
+        $update->execute();
+
+        // echo a message to say the UPDATE succeeded
+        echo $update->rowCount() . " records UPDATED successfully";
+    } catch(PDOException $e) {
+        echo "<br>" . $e->getMessage();
+    }
+    }
+
 
 }

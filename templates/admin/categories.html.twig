@@ -1,0 +1,19 @@
+<a href="create-article.php"><button>Insert</button></a>
+<div class="row">
+    <div class="col-2">Edit</div>
+
+    <div class="col-2"></div>
+</div>
+{% for category in categories %}
+
+    {#    send the GET to category.php so it can be retrieved by the database and display the correct category #}
+    <div class="row">
+        <div class="col-2">view <a href="../category.php?id={{ category['id'] }}">
+                {{ category['category_name'] }} </a> </div>
+
+        <div class="col"><a href="../admin/category-edit.php?id={{ category['id'] }}">{{ category['title'] }}</a> </div>
+        <div class="col deleteItem"><a href="../admin/category.php?deleteId={{ category['id'] }}"><button>delete category</button></a> </div>
+    </div>
+
+{% endfor %}
+

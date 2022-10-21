@@ -19,6 +19,20 @@ class deleteDataFromDB
         return"<br>" . $e->getMessage();
         }
     }
+    public static function deleteCategory($id)
+    {
+        try {
+            //get every article in the db
+            $db = DBConnect::setConnection();
+            $delete = $db->prepare('DELETE FROM categories where id=:id');
 
+            $delete->bindParam('id', $id, PDO::PARAM_INT);
+            $delete->execute();
+            return $delete->rowCount();
+        } catch(PDOException $e) {
+            return false;
+            return"<br>" . $e->getMessage();
+        }
+    }
 
 }
