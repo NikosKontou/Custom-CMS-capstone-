@@ -16,6 +16,21 @@
         } catch (PDOException $e){
             echo "<br>" . $e->getMessage();
         }
+    }    public static function getArticlesForEdit()
+    {
+        try {
+
+            //get every article in the db to display it at the administrative panel
+            $db = DBConnect::setConnection();
+            $select = $db->prepare('SELECT a.id, title, category_id, u.user_name , created_time, last_edit '.
+                'From articles a '.
+                'inner join users u ON u.id = a.created_by '.
+                'order by created_time DESC');
+            $select->execute();
+            return $select->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e){
+            echo "<br>" . $e->getMessage();
+        }
     }
 
      public static function getSingleArticle($id)

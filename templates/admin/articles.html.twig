@@ -1,12 +1,21 @@
 <a href="create-article.php"><button>Insert</button></a>
+<div class="row">
+        <div class="col">View</div>
+        <div class="col">Created by</div>
+        <div class="col">Created at</div>
+        <div class="col">Last update</div>
+</div>
 {% for article in articles %}
 
 {#    send the GET to article.php so it can be retrieved by the database and display the correct article #}
 <div class="row">
         <div class="col">view <a href="../article.php?id={{ article['id'] }}">
          {{ article['title'] }} </a> </div>
-        <div class="col deleteItem"><a href="../admin/articles.php?deleteId={{ article['id'] }}"><button>delete item</button></a> </div>
+        <div class="col">{{ article['created_by'] }}</div>
+        <div class="col">{{ article['created_time'] }}</div>
+        <div class="col">{{ article['last_edit'] }}</div>
         <div class="col">edit <a href="../admin/article-edit.php?id={{ article['id'] }}">{{ article['title'] }}</a> </div>
+        <div class="col deleteItem"><a href="../admin/articles.php?deleteId={{ article['id'] }}"><button>delete item</button></a> </div>
 </div>
 
 {% endfor %}

@@ -13,7 +13,7 @@
 <div class="container">
 <?php
 //get every article from the DB
-$result = getDataFromDB::getArticles();
+$result = getDataFromDB::getArticlesForEdit();
 //display it in the template
 echo $twig->render('admin/articles.html.twig',['articles'=>$result]);
 
