@@ -15,9 +15,10 @@
     <?php
 
     $db = DBConnect::setConnection();
+    echo"<script>console.log('test')</script>";
+    if (isset($_POST['createArticle']) && isset($_POST['title']) && isset($_POST['body'])) {
 
-    if (isset($_POST['createArticle']) && isset($_POST['title']) && isset($_POST['body'])&& isset($_POST['imageToUpload'])) {
-        $target_dir = "assets/images/";
+        $target_dir = "../assets/images/";
         $target_file = $target_dir . basename($_FILES["imageToUpload"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
