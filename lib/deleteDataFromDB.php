@@ -16,7 +16,7 @@ class deleteDataFromDB
             return $delete->rowCount();
         } catch(PDOException $e) {
             return false;
-//        return"<br>" . $e->getMessage();
+        return"<br>" . $e->getMessage();
         }
     }
 

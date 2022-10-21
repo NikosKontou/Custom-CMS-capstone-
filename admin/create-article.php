@@ -43,12 +43,13 @@
         }
         if (move_uploaded_file($_FILES["imageToUpload"]["tmp_name"], $target_file)) {
             echo"<script>console.log('ok')</script>";
+
             echo "The image ". htmlspecialchars( basename( $_FILES["imageToUpload"]["name"])). " has been uploaded.";
         } else {
             echo"<script>console.log('generic error')</script>";
         }
 
-        insertDataToDB::createArticle($_POST['title'], $_POST['body']);
+        insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars( basename( $_FILES["imageToUpload"]["name"])));
     }
 
     //var_dump($result[0]->body);exit;

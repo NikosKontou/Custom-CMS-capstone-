@@ -2,23 +2,18 @@
     <div class="row">
         <div class="col-8">
             <div class="form-group row">
-            <label for="articleTitle" class="col-sm-3 col-form-label">Title :</label>  <div class="col-sm-9">
-            <input class="form-control" type="text" class="form-control" id="articleTitle" name="title" value="
-            {% if article  is defined %}
-{{ article.title }}
-{% endif %}
-">
-            </div>
+                <label for="articleTitle" class="col-sm-3 col-form-label">Title :</label>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" class="form-control" id="articleTitle" name="title"
+                           value="{{  article ? article.title }}">
+                </div>
             </div>
         </div>
         <div class="col-4">
             <div class="form-group row">
-            <label class="col col-form-label" for="articleID">Article id: </label>  <div class="col-10">
-            <input type="text" creadonly class="form-control-plaintext" id="articleID" name="id" value="
-                        {% if article  is defined %}
-{{ article.id }}
-{% endif %}
-">
+                <label class="col col-form-label" for="articleID">Article id: </label>
+                <div class="col-10">
+                    <input type="text" readonly class="form-control-plaintext" id="articleID" name="id" value="{{  article ? article.id }}">
                 </div>
             </div>
         </div>
@@ -26,15 +21,29 @@
     </div>
 
 
-
     <div class="form-group">
         <label for="bodyText">Body</label>
-        <textarea name="body" class="form-control" id="bodyText" rows="10">
-                        {% if article  is defined %}
-            {{ article.body }}
-            {% endif %}
-        </textarea>
+        <textarea name="body" class="form-control" id="bodyText" rows="10" value="{{  article ? article.body }}"></textarea>
     </div>
     <input type="file" name="imageToUpload" id="imageUpload">
-    <button name="{%if article  is defined%}{{"editArticle"}}{%else%}{{"createArticle"}}{% endif %}" type="submit" class="btn btn-primary">Save changes</button>
+    <button name="{% if article  is defined %}{{ "editArticle" }}{% else %}{{ "createArticle" }}{% endif %}"
+            type="submit" class="btn btn-primary">Save changes
+    </button>
 </form>
+
+<script>
+    function fileValidation() {
+        let imageUpload = document.getElementById('imageUpload');
+
+        let filePath = imageUpload.value;
+
+        // allowed file type
+        let allowedExtensions = /(\.jpg|\.svg|\.png|\.jpeg|\.gif)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Invalid file type');
+            imageUpload.value = '';
+            return false;
+        }
+    }
+</script>
