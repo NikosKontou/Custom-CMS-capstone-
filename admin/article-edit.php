@@ -17,8 +17,14 @@
 $db = DBConnect::setConnection();
 
 if (isset($_POST['editArticle']) && isset($_POST['title']) && isset($_POST['body'])) {
+    if(isset($_FILES['imageToUpload'])){
+        if (dataValidation::imageCheck($_FILES['imageToUpload'])) {
+            updateDataDromDb::setSingleArticle($_POST['id'], $_POST['title'], $_POST['body'], $_FILES['imageToUpload']["name"]);
+        }
+    }else{
+        updateDataDromDb::setSingleArticleWithoutImage($_POST['id'], $_POST['title'], $_POST['body']);
+    }
 
-    updateDataDromDb::setSingleArticle($_POST['id'], $_POST['title'], $_POST['body']);
 }
 
 //get the article from the DB

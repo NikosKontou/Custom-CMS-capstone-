@@ -23,4 +23,25 @@ class updateDataDromDb
 }
     }
 
+    public static function setSingleArticleWithoutImage($id, $title, $body): void
+    {   try{
+        //set an article
+        $db= DBConnect::setConnection();
+        $update = $db->prepare("update articles set title = :title,body= :body, header_image= :image where id = :id");
+
+        $update->bindParam('title', $title, PDO::PARAM_STR);
+        $update->bindParam('body', $body, PDO::PARAM_STR);
+        $update->bindParam('image', $image, PDO::PARAM_STR);
+        $update->bindParam('id', $id, PDO::PARAM_INT);
+//        var_dump($update);exit();
+        $update->execute();
+
+        // echo a message to say the UPDATE succeeded
+        echo $update->rowCount() . " records UPDATED successfully";
+    } catch(PDOException $e) {
+        echo "<br>" . $e->getMessage();
+    }
+    }
+
+
 }
