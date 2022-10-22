@@ -19,7 +19,7 @@
     if (isset($_POST['register']) && !empty($_POST['username']) && !empty($_POST['password'])) {
         $cleanUserName = dataValidation::rmvSpclChars($_POST['username']);
         $cleanPassword = dataValidation::rmvSpclChars($_POST['password']);
-        $result = insertDataToDB::userREgister($cleanUserName, $cleanPassword);
+        $result = insertDataToDB::userRegister($cleanUserName, $cleanPassword);
 
     }
     ?>

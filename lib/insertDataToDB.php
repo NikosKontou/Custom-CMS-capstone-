@@ -22,7 +22,7 @@ class insertDataToDB
     }
     }
 
-    public static function userREgister($username, $password){
+    public static function userRegister($username, $password){
         try {
             $encrypted_password = password_hash($password, PASSWORD_BCRYPT);
             $db = DBConnect::setConnection();
@@ -35,6 +35,20 @@ class insertDataToDB
             echo "<br>" . $e->getMessage();
         }
 
+    }
+
+    public static function createCategory($name)
+    {   try{
+        //set an article
+        $db= DBConnect::setConnection();
+        $insert = $db->prepare('insert into categories (category_name) values (:name)');
+
+        $insert->bindParam('name', $name, PDO::PARAM_STR);
+        $insert->execute();
+
+    } catch(PDOException $e) {
+        echo "<br>" . $e->getMessage();
+    }
     }
 
 }
