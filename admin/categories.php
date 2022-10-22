@@ -25,7 +25,6 @@
 <?php
 //get the id for deletion from post
 if(isset($_GET['deleteId'])){
-    exit("delete selected");
     $res = deleteDataFromDB::deleteCategory($_GET['deleteId']);
     if ($res!=false){
         echo('deletion was a success');
