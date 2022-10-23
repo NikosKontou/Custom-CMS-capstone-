@@ -22,11 +22,11 @@
             insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars( basename( $_FILES["imageToUpload"]["name"])), $_POST['categorySelector'],$_SESSION['id']);
         }
     }
-
+    $categoryList=getDataFromDB::getCategories();
     //var_dump($result[0]->body);exit;
     //get the same template used to update an article but pass no article data
     //phpself is important so that the php file can get the post request from the twig template
-    echo $twig->render('admin/article-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
+    echo $twig->render('admin/article-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'categoryList'=>$categoryList]);
 
 
     ?>
