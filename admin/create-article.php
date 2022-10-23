@@ -17,9 +17,13 @@
     $db = DBConnect::setConnection();
     echo"<script>console.log('test')</script>";
     if (isset($_POST['createArticle']) && isset($_POST['title']) && isset($_POST['body']) &&isset($_POST['categorySelector'])) {
-        if (dataValidation::imageCheck($_FILES['imageToUpload'])){
+        //if file size is smaller than one byte, do not upload the image
+        if ($_FILES['imageToUpload']['size']>1) {
+            if (dataValidation::imageCheck($_FILES['imageToUpload'])) {
+                insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars(basename($_FILES["imageToUpload"]["name"])), $_POST['categorySelector'], $_SESSION['id']);
+            }
+        } else{
 
-            insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars( basename( $_FILES["imageToUpload"]["name"])), $_POST['categorySelector'],$_SESSION['id']);
         }
     }
     $categoryList=getDataFromDB::getCategories();

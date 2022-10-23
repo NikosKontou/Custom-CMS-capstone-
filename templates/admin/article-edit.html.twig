@@ -27,8 +27,8 @@
     </div>
     <div class="form-group">
         <label for="categorySelector">Category</label>
-        <select name ="categoryName" id ="categoryID">
-        {% for categoryList as category %}
+        <select name ="categorySelector" id ="categorySelector">
+        {% for category in categoryList %}
     <option value="{{ category['id'] }}">{{ category['category_name'] }}</option>
         {% endfor %}
         </select>

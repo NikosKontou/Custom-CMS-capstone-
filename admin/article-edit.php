@@ -17,11 +17,13 @@
 $db = DBConnect::setConnection();
 
 if (isset($_POST['editArticle']) && isset($_POST['title']) && isset($_POST['body'])) {
-    if(isset($_FILES['imageToUpload'])){
+    if(($_FILES['imageToUpload']['size']> 1)){
         if (dataValidation::imageCheck($_FILES['imageToUpload'])) {
+//            var_dump($_POST['categorySelector']);exit;
             updateDataDromDb::setSingleArticle($_POST['id'], $_POST['title'], $_POST['body'], $_FILES['imageToUpload']["name"], $_POST['categorySelector']);
         }
     }else{
+//        var_dump($_POST['categorySelector']);exit;
         updateDataDromDb::setSingleArticleWithoutImage($_POST['id'], $_POST['title'], $_POST['body'], $_POST['categorySelector']);
     }
 }
