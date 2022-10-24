@@ -1,0 +1,12 @@
+
+{% for article in articles %}
+{#    display the image#}
+    <img src="../assets/images/{{ article['header_image'] }}" />
+{#    send the GET to article.php so it can be retrieved by the database#}
+    <h2><a href="article.php?id={{ article['id'] }}">
+        {{ article['title'] }} </a>
+    </h2>
+    <p>
+        {{ article['body'] }}
+    </p>
+{% endfor %}
