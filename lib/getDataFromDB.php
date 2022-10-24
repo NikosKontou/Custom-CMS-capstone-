@@ -90,4 +90,20 @@ class getDataFromDB
         }
     }
 
+    public static function getMenuCategories()
+    {
+        try {
+
+            //get every article in the db to display it at the administrative panel
+            $db = DBConnect::setConnection();
+            $select = $db->prepare('SELECT category_name FROM categories where visibility >0'
+            .'ORDER BY ORDERING;');
+            $select->execute();
+            return $select->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
+    }
+
+
 }

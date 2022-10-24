@@ -14,10 +14,15 @@
             <div class="collapse navbar-collapse" id="main_nav">
 
                 <ul class="navbar-nav ms-auto">
-                    {% for item in menuItems %}
+                    {% set break = false %}
+{#                    if break is true, stop the for loop#}
+                    {% for key,item in menuItems if not break%}
                     <li class="nav-item"><a class="nav-link" href="index.php?categoryName={{ item['category_name'] }}"> {{ item['category_name']}} </a></li>
+                        {% if key > 9 %}
+                            {#limit the menu to 10 items#}
+                            {% set break = true %}
+                        {% endif %}
                     {% endfor %}
-                    <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
 {#                    if the username is set, the user is loged in and can see relative information#}
                     {% if username != null %}
                     <li class="nav-item dropdown">

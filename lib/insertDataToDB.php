@@ -40,14 +40,16 @@ class insertDataToDB
 
     }
 
-    public static function createCategory($name)
+    public static function createCategory($name, $cat_visibility, $cat_order)
     {
         try {
             //set an article
             $db = DBConnect::setConnection();
-            $insert = $db->prepare('insert into categories (category_name) values (:name)');
+            $insert = $db->prepare('insert into categories (category_name, visibility, ordering) values (:name, :visibility, :ordering)');
 
             $insert->bindParam('name', $name, PDO::PARAM_STR);
+            $insert->bindParam('visibility', $cat_visibility, PDO::PARAM_INT);
+            $insert->bindParam('ordering', $cat_order, PDO::PARAM_INT);
             $insert->execute();
 
         } catch (PDOException $e) {

@@ -47,15 +47,17 @@ class updateDataDromDb
         }
     }
 
-    public static function setCategory($id, $cat_name): void
+    public static function setCategory($id, $cat_name, $cat_visibility, $cat_order): void
     {
         try {
             //set an article
             $db = DBConnect::setConnection();
-            $update = $db->prepare("update categories set category_name = :category_name where id = :id");
+            $update = $db->prepare("update categories set category_name = :category_name, visibility = :visibility, ordering = :ordering where id = :id");
 
             $update->bindParam('category_name', $cat_name, PDO::PARAM_STR);
             $update->bindParam('id', $id, PDO::PARAM_INT);
+            $update->bindParam('visibility', $cat_visibility, PDO::PARAM_INT);
+            $update->bindParam('ordering', $cat_order, PDO::PARAM_INT);
 //        var_dump($update);exit();
             $update->execute();
 

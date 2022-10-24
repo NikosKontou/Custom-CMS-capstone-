@@ -18,7 +18,7 @@
 
     if (isset($_POST['editCategory']) && isset($_POST['categoryName']) ) {
 
-            updateDataDromDb::setCategory($_POST['id'], $_POST['categoryName']);
+            updateDataDromDb::setCategory($_POST['id'], $_POST['categoryName'], $_POST['categoryVisibility'], $_POST['categoryOrder']);
 
 
     }

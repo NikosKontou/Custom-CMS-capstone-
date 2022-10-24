@@ -17,7 +17,6 @@ if (!isset($_SESSION['menu_items'])){
 //call the header template
 //if the session variables are not set, pass null with the ternary operator
 
-var_dump( $_SESSION['menu_items']);
 echo $twig->render('header.html.twig', ['menuItems'=> $_SESSION['menu_items'], 'phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'username' => (isset($_SESSION['username'])) ? $_SESSION['username'] : null, 'userID' => (isset($_SESSION['id'])) ? $_SESSION['id'] : null] );
 echo("<div class='container'>");
 //get every article from the DB
