@@ -37,7 +37,7 @@
                 <label class="col col-form-label" for="categoryOrder">Order : </label>
                 <div class="col-9">
                     {#                    if category is set, print the id else print nothing#}
-                    <input type="text" readonly class="form-control-plaintext" id="categoryOrder" name="categoryOrder" value="{{  category ? category.ordering }}">
+                    <input type="text" class="form-control-plaintext" id="categoryOrder" name="categoryOrder" value="{{  category ? category.ordering }}">
                 </div>
             </div>
         </div>

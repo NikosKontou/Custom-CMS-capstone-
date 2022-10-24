@@ -16,9 +16,9 @@
                 <ul class="navbar-nav ms-auto">
                     {% set break = false %}
 {#                    if break is true, stop the for loop#}
-                    {% for key,item in menuItems if not break%}
+                    {% for item in menuItems if not break%}
                     <li class="nav-item"><a class="nav-link" href="index.php?categoryName={{ item['category_name'] }}"> {{ item['category_name']}} </a></li>
-                        {% if key > 9 %}
+                        {% if loop.index > 9 %}
                             {#limit the menu to 10 items#}
                             {% set break = true %}
                         {% endif %}
