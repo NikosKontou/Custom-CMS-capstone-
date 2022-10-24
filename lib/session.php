@@ -19,7 +19,9 @@ class Session{
 
 
 }
-function init(){
+function init(): void
+{
+    exit("hiii");
     if (!isset($_SESSION['menu_items'])){
         $_SESSION['menu_items'] = getDataFromDB::getCategories();
     }
