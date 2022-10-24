@@ -18,4 +18,5 @@ require("dependencies/js.php");
 //start the session
 ob_start();
 session_start();
+
 ?>

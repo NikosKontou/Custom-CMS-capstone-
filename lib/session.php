@@ -1,9 +1,8 @@
 <?php
 //helper class for session, may get deleted later
 class Session{
-    public static function init(){
-        session_start();
-    }
+
+
     public static function destroy(){
         session_destroy();
     }
@@ -17,5 +16,13 @@ class Session{
             return false;
         }
     }
+
+
 }
+function init(){
+    if (!isset($_SESSION['menu_items'])){
+        $_SESSION['menu_items'] = getDataFromDB::getCategories();
+    }
+}
+init();
 ?>
