@@ -15,13 +15,9 @@
 
                 <ul class="navbar-nav ms-auto">
                     {% set break = false %}
-{#                    if break is true, stop the for loop#}
-                    {% for item in menuItems if not break%}
+                    {#limit the menu to 10 items#}
+                    {% for item in menuItems|slice(0, 9) %}
                     <li class="nav-item"><a class="nav-link" href="index.php?categoryName={{ item['category_name'] }}"> {{ item['category_name']}} </a></li>
-                        {% if loop.index > 9 %}
-                            {#limit the menu to 10 items#}
-                            {% set break = true %}
-                        {% endif %}
                     {% endfor %}
 {#                    if the username is set, the user is loged in and can see relative information#}
                     {% if username != null %}

@@ -12,7 +12,7 @@
 
 <?php
 if (!isset($_SESSION['menu_items'])){
-    $_SESSION['menu_items'] = getDataFromDB::getCategories();
+    $_SESSION['menu_items'] = getDataFromDB::getMenuCategories();
 }
 //call the header template
 //if the session variables are not set, pass null with the ternary operator
