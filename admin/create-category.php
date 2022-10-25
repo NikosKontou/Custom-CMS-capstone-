@@ -17,7 +17,7 @@
     $db = DBConnect::setConnection();
     if (isset($_POST['createCategory']) && isset($_POST['categoryName'])) {
 
-        insertDataToDB::createCategory( rmvSpclChars($_POST['categoryName']), rmvSpclChars($_POST['categoryVisibility']), rmvSpclChars($_POST['categoryOrder']));
+        insertDataToDB::createCategory( dataValidation::rmvSpclChars($_POST['categoryName']), dataValidation::rmvSpclChars($_POST['categoryVisibility']), dataValidation::rmvSpclChars($_POST['categoryOrder']));
 
     }
     echo $twig->render('admin/category-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
