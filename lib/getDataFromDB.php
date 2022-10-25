@@ -53,7 +53,7 @@ class getDataFromDB
     {
         try {
             $db = DBConnect::setConnection();
-            $select = $db->prepare('SELECT id, user_password FROM users where user_name = :username');
+            $select = $db->prepare('SELECT id, user_password, access_level FROM users where user_name = :username');
             $select->bindParam('username', $username, PDO::PARAM_STR);
             $select->execute();
             return $select->fetchAll(PDO::FETCH_OBJ);
@@ -97,7 +97,7 @@ class getDataFromDB
             //get every article in the db to display it at the administrative panel
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT category_name FROM categories where visibility >0'
-            .'ORDER BY ORDERING;');
+            .' ORDER BY ORDERING;');
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
