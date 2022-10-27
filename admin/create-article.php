@@ -23,6 +23,7 @@
                 insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars(basename($_FILES["imageToUpload"]["name"])), $_POST['categorySelector'], $_SESSION['id']);
             }
         } else{
+            insertDataToDB::createArticleWithoutImage($_POST['title'], $_POST['body'], $_POST['categorySelector'], $_SESSION['id']);
 
         }
     }
