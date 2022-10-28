@@ -7,8 +7,6 @@ class getDataFromDB
     public static function getArticles()
     {
         try {
-
-
             //get every article in the db
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT * FROM articles');
@@ -66,8 +64,6 @@ class getDataFromDB
     public static function getCategories()
     {
         try {
-
-            //get every article in the db to display it at the administrative panel
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT * FROM categories');
             $select->execute();
@@ -80,7 +76,7 @@ class getDataFromDB
     public static function getSingleCategory($id)
     {
         try {
-            //get a single article
+            //get a single category for viewing and editing purposes
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT * FROM categories cat ' .
                 'where id =' . $id);
@@ -128,11 +124,20 @@ class getDataFromDB
     public static function getMenuCategories()
     {
         try {
-
-            //get every article in the db to display it at the administrative panel
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT category_name FROM categories where visibility >0'
                 . ' ORDER BY ORDERING;');
+            $select->execute();
+            return $select->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
+    }
+    public static function getSiteProperties(){
+        try {
+            $db = DBConnect::setConnection();
+            $select = $db->prepare('SELECT * FROM site_properies'
+                . ' ORDER BY id;');
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

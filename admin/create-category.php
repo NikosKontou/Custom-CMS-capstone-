@@ -26,7 +26,6 @@
     }else{
         $categoryVisibility = getDataFromDB::getCategoryVisibility();
     }
-    $categoryVisibility = getDataFromDB::getCategoryVisibility(isset($_GET['id'])?:$_GET['id']);
     echo $twig->render('admin/category-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'visibility'=> $categoryVisibility]);
 
 

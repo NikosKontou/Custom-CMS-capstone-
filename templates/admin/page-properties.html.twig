@@ -1,0 +1,42 @@
+<form role="form" action="{{ phpSelf }}" method="post" >
+    <div class="form-group">
+        <label for="siteName">Site name</label>
+        <textarea class="form-control" id="siteName" rows="1"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="siteSlogan">Slogan</label>
+        <textarea class="form-control" id="siteSlogan" rows="1"></textarea>
+        <small id="nameHelp" class="form-text text-muted">Something small but memorable</small>
+    </div>
+
+    <div class="form-group">
+        <label for="contactMail">Email</label>
+        <textarea class="form-control" id="contactMail" rows="1"></textarea>
+        <small id="nameHelp" class="form-text text-muted">it will be displayed as contact information a the footer</small>
+    </div>
+
+    <div class="form-group">
+        <label for="twitter">Twitter</label>
+        <textarea class="form-control" id="twitter" rows="1"></textarea>
+        <input class="form-check-input" type="checkbox" id="twitterCheckbox" value="option1">
+        <label class="form-check-label" for="twitterCheckbox">Visible</label>
+    </div>
+
+    <div class="form-group">
+        <label for="facebook">Facebook</label>
+        <textarea class="form-control" id="facebook" rows="1"></textarea>
+        <input class="form-check-input" type="checkbox" id="facebookCheckBox" value="option1">
+        <label class="form-check-label" for="facebookCheckBox">Visible</label>
+    </div>
+
+    <div class="form-group">
+        <label for="instagram">Instagram</label>
+        <textarea class="form-control" id="instagram" rows="1"></textarea>
+        <input class="form-check-input" type="checkbox" id="instagramCheckBox" value="option1">
+        <label class="form-check-label" for="instagramCheckBox">Visible</label>
+    </div>
+    <button name='editProperties'
+            type="submit" class="btn btn-primary">Save changes
+    </button>
+</form>
+
