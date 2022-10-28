@@ -21,6 +21,11 @@
 
     }
 //    if GET[id] isset then pass it to the function, otherwise pass nothing
+    if (isset($_GET['id'])){
+        $categoryVisibility = getDataFromDB::getCategoryVisibility($_GET['id']);
+    }else{
+        $categoryVisibility = getDataFromDB::getCategoryVisibility();
+    }
     $categoryVisibility = getDataFromDB::getCategoryVisibility(isset($_GET['id'])?:$_GET['id']);
     echo $twig->render('admin/category-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'visibility'=> $categoryVisibility]);
 
