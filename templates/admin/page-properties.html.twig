@@ -1,16 +1,16 @@
 <form role="form" action="{{ phpSelf }}" method="post" >
     <div class="form-group">
         <label for="siteName">Site name</label>
-        <textarea class="form-control" id="siteName" rows="1">{{ properties[3].value }}</textarea>
+        <textarea class="form-control" id="siteName" name="siteName" rows="1">{{ properties[3].value }}</textarea>
     </div>
     <div class="form-group">
         <label for="siteSlogan">Slogan</label>
-        <textarea class="form-control" id="siteSlogan" rows="1">{{ properties[6].value }}</textarea>
+        <textarea class="form-control" id="siteSlogan" name="siteSlogan" rows="1">{{ properties[6].value }}</textarea>
         <small id="sloganHelp" class="form-text text-muted">Something small but memorable</small>
     </div>
     <div class="form-group">
         <label for="siteColor">Site color</label>
-        <input name="colorpicker" id="siteColor" type="color" value="{{properties[4].value }}">
+        <input name="siteColor" id="siteColor" type="color" value="{{properties[4].value }}">
 {#        <textarea class="form-control" id="siteColor" rows="1">{{ properties[4].value }}</textarea>#}
         <small id="colorHelp" class="form-text text-muted">Be creative!</small>
     </div>
@@ -21,35 +21,35 @@
     </div>
     <div class="form-group">
         <label for="contactMail">Email</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="{{ properties[2].value }}">
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ properties[2].value }}">
         <small id="nameHelp" class="form-text text-muted">it will be displayed as contact information a the footer</small>
     </div>
     <div class="form-group">
         <label for="contactMail">Address</label>
-        <textarea class="form-control" id="contactMail" rows="1">{{ properties[7].value }}</textarea>
+        <textarea class="form-control" id="address" name="address" rows="1">{{ properties[7].value }}</textarea>
         <small id="nameHelp" class="form-text text-muted">it will be displayed as contact information a the footer</small>
     </div>
 
     <div class="form-group">
         <label for="twitter">Twitter</label>
-        <textarea class="form-control" id="twitter" rows="1">{{ properties[8].value }}</textarea>
-        <input class="form-check-input" type="checkbox" id="twitterCheckbox" value="option1"
+        <textarea class="form-control" id="twitter" name="twitter" rows="1">{{ properties[8].value }}</textarea>
+        <input class="form-check-input" type="checkbox" id="twitterCheckBox" name="twitterCheckBox" value="1"
                 {% if properties[8].visibility == 1 %} checked {% endif %}>
-        <label class="form-check-label" for="twitterCheckbox">Visible</label>
+        <label class="form-check-label" for="twitterCheckBox">Visible</label>
     </div>
 
     <div class="form-group">
         <label for="facebook">Facebook</label>
-        <textarea class="form-control" id="facebook" rows="1">{{ properties[0].value }}</textarea>
-        <input class="form-check-input" type="checkbox" id="facebookCheckBox" value="option1"
+        <textarea class="form-control" id="facebook" name="facebook" rows="1">{{ properties[0].value }}</textarea>
+        <input class="form-check-input" type="checkbox" id="facebookCheckBox" name="facebookCheckBox" value="1"
                 {% if properties[0].visibility == 1 %} checked {% endif %}>
         <label class="form-check-label" for="facebookCheckBox">Visible</label>
     </div>
 
     <div class="form-group">
         <label for="instagram">Instagram</label>
-        <textarea class="form-control" id="instagram" rows="1">{{ properties[1].value }}</textarea>
-        <input class="form-check-input" type="checkbox" id="instagramCheckBox" value="option1"
+        <textarea class="form-control" id="instagram" name="instagram" rows="1">{{ properties[1].value }}</textarea>
+        <input class="form-check-input" type="checkbox" id="instagramCheckBox" name="instagramCheckBox" value="1"
                 {% if properties[1].visibility == 1 %} checked {% endif %}>
         <label class="form-check-label" for="instagramCheckBox">Visible</label>
     </div>

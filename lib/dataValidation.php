@@ -9,10 +9,9 @@ class dataValidation
         return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
     }
 
-    function removeSpecialCharacterPassword($string): array|string|null
+    public static function removeSpecialCharsRelaxed($string): array|string|null
     {
-        //a more lenient algorithm used specifically for passwords
-        $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+        //a more lenient algorithm used specifically for passwords, mails and when you have to allow some special characters
         return preg_replace('/\[.*\]/U', '', $string);
     }
 

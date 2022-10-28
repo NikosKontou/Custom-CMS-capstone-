@@ -73,24 +73,24 @@ class updateDataDromDb
         //update with "case" in order to not make multiple requests to the DB
         $db = DBConnect::setConnection();
         try {
-            $update = $db->prepare("update site_properties set value = CASE " .
-                "WHEN id=1 THEN " . $facebook .
-                "WHEN id=2 THEN " . $instagram .
-                "WHEN id=3 THEN " . $email .
-                "WHEN id=4 THEN " . $siteName .
-                "WHEN id=5 THEN " . $siteColor .
-                "WHEN id=6 THEN " . $siteLogo .
-                "WHEN id=7 THEN " . $siteSlogan .
-                "WHEN id=8 THEN " . $address .
-                "WHEN id=10 THEN " . $twitter .
-                "END");
+            $update = $db->prepare("update site_properties set value = CASE" .
+                " WHEN id=1 THEN " . $facebook .
+                " WHEN id=2 THEN " . $instagram .
+                " WHEN id=3 THEN " . $email .
+                " WHEN id=4 THEN " . $siteName .
+                " WHEN id=5 THEN " . $siteColor .
+                " WHEN id=6 THEN " . $siteLogo .
+                " WHEN id=7 THEN " . $siteSlogan .
+                " WHEN id=8 THEN " . $address .
+                " WHEN id=10 THEN " . $twitter .
+                " END");
             $update->execute();
             echo $update->rowCount() . " records UPDATED successfully";
-            $update = $db->prepare("update site_properties set visibility = CASE " .
-                "WHEN id=1 THEN " . $facebookBox .
-                "WHEN id=2 THEN " . $instagramBox .
-                "WHEN id=10 THEN " . $twitterBox .
-                "END");
+            $update = $db->prepare("update site_properties set visibility = CASE" .
+                " WHEN id=1 THEN " . $facebookBox .
+                " WHEN id=2 THEN " . $instagramBox .
+                " WHEN id=10 THEN " . $twitterBox .
+                " END");
             $update->execute();
             echo $update->rowCount() . " records UPDATED successfully";
         } catch (PDOException $e) {
@@ -103,23 +103,24 @@ class updateDataDromDb
         //alternate query in case the image was not updated
         $db = DBConnect::setConnection();
         try {
-            $update = $db->prepare("update site_properties set value = CASE " .
-                "WHEN id=1 THEN " . $facebook .
-                "WHEN id=2 THEN " . $instagram .
-                "WHEN id=3 THEN " . $email .
-                "WHEN id=4 THEN " . $siteName .
-                "WHEN id=5 THEN " . $siteColor .
-                "WHEN id=7 THEN " . $siteSlogan .
-                "WHEN id=8 THEN " . $address .
-                "WHEN id=10 THEN " . $twitter .
-                "END");
+            $update = $db->prepare("update site_properties set value = CASE" .
+                " WHEN id=1 THEN '" . $facebook .
+                "' WHEN id=2 THEN '" . $instagram .
+                "' WHEN id=3 THEN '" . $email .
+                "' WHEN id=4 THEN '" . $siteName .
+                "' WHEN id=5 THEN '" . $siteColor .
+                "' WHEN id=7 THEN '" . $siteSlogan .
+                "' WHEN id=8 THEN '" . $address .
+                "' WHEN id=10 THEN '" . $twitter .
+                "' END");
+//            print_r($update);exit();
             $update->execute();
             echo $update->rowCount() . " records UPDATED successfully";
-            $update = $db->prepare("update site_properties set visibility = CASE " .
-                "WHEN id=1 THEN " . $facebookBox .
-                "WHEN id=2 THEN " . $instagramBox .
-                "WHEN id=10 THEN " . $twitterBox .
-                "END");
+            $update = $db->prepare("update site_properties set visibility = CASE" .
+                " WHEN id=1 THEN '" . $facebookBox .
+                "' WHEN id=2 THEN '" . $instagramBox .
+                "' WHEN id=10 THEN '" . $twitterBox .
+                "' END");
             $update->execute();
             echo $update->rowCount() . " records UPDATED successfully";
         } catch (PDOException $e) {
