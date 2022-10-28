@@ -50,7 +50,6 @@ class updateDataDromDb
     public static function setCategory($id, $cat_name, $cat_visibility, $cat_order): void
     {
         try {
-            //set an article
             $db = DBConnect::setConnection();
             $update = $db->prepare("update categories set category_name = :category_name, visibility = :visibility, ordering = :ordering where id = :id");
 
@@ -62,6 +61,66 @@ class updateDataDromDb
             $update->execute();
 
             // echo a message to say the UPDATE succeeded
+            echo $update->rowCount() . " records UPDATED successfully";
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
+    }
+
+    public static function setPageProperties($facebook,
+    $instagram, $email, $siteName, $siteColor, $siteLogo, $siteSlogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox)
+    {
+        //update with "case" in order to not make multiple requests to the DB
+        $db = DBConnect::setConnection();
+        try {
+            $update = $db->prepare("update site_properties set value = CASE " .
+                "WHEN id=1 THEN " . $facebook .
+                "WHEN id=2 THEN " . $instagram .
+                "WHEN id=3 THEN " . $email .
+                "WHEN id=4 THEN " . $siteName .
+                "WHEN id=5 THEN " . $siteColor .
+                "WHEN id=6 THEN " . $siteLogo .
+                "WHEN id=7 THEN " . $siteSlogan .
+                "WHEN id=8 THEN " . $address .
+                "WHEN id=10 THEN " . $twitter .
+                "END");
+            $update->execute();
+            echo $update->rowCount() . " records UPDATED successfully";
+            $update = $db->prepare("update site_properties set visibility = CASE " .
+                "WHEN id=1 THEN " . $facebookBox .
+                "WHEN id=2 THEN " . $instagramBox .
+                "WHEN id=10 THEN " . $twitterBox .
+                "END");
+            $update->execute();
+            echo $update->rowCount() . " records UPDATED successfully";
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
+    }
+    public static function setPagePropertiesWithoutImage($facebook,
+   $instagram, $email, $siteName, $siteColor, $siteSlogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox)
+    {
+        //alternate query in case the image was not updated
+        $db = DBConnect::setConnection();
+        try {
+            $update = $db->prepare("update site_properties set value = CASE " .
+                "WHEN id=1 THEN " . $facebook .
+                "WHEN id=2 THEN " . $instagram .
+                "WHEN id=3 THEN " . $email .
+                "WHEN id=4 THEN " . $siteName .
+                "WHEN id=5 THEN " . $siteColor .
+                "WHEN id=7 THEN " . $siteSlogan .
+                "WHEN id=8 THEN " . $address .
+                "WHEN id=10 THEN " . $twitter .
+                "END");
+            $update->execute();
+            echo $update->rowCount() . " records UPDATED successfully";
+            $update = $db->prepare("update site_properties set visibility = CASE " .
+                "WHEN id=1 THEN " . $facebookBox .
+                "WHEN id=2 THEN " . $instagramBox .
+                "WHEN id=10 THEN " . $twitterBox .
+                "END");
+            $update->execute();
             echo $update->rowCount() . " records UPDATED successfully";
         } catch (PDOException $e) {
             echo "<br>" . $e->getMessage();

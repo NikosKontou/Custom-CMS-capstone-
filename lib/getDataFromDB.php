@@ -136,7 +136,7 @@ class getDataFromDB
     public static function getSiteProperties(){
         try {
             $db = DBConnect::setConnection();
-            $select = $db->prepare('SELECT * FROM site_properies'
+            $select = $db->prepare('SELECT * FROM site_properties'
                 . ' ORDER BY id;');
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
