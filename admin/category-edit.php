@@ -25,12 +25,12 @@
 
     //get the category from the DB
     if (isset($_GET['id'])){
-        $result = getDataFromDB::getCategoryForEdit($_GET['id']);
-//        var_dump($result);exit();
+        $result = getDataFromDB::getSingleCategory($_GET['id']);
+        $categoryVisibility = getDataFromDB::getCategoryVisibility($_GET['id']);
+//        var_dump($result[0]);exit();
 //var_dump($result[0]->body);exit;
 //display it in the template
-        var_dump($result);exit();
-        echo $twig->render('admin/category-edit.html.twig',['category'=>$result[0], 'phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
+        echo $twig->render('admin/category-edit.html.twig',['category'=>$result[0], 'visibility'=> $categoryVisibility, 'phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
     }
 
     ?>
