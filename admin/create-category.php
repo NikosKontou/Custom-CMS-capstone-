@@ -20,8 +20,8 @@
         insertDataToDB::createCategory( dataValidation::rmvSpclChars($_POST['categoryName']), dataValidation::rmvSpclChars($_POST['categoryVisibility']), dataValidation::rmvSpclChars($_POST['categoryOrder']));
 
     }
-
-    $categoryVisibility = getDataFromDB::getCategoryVisibility($_GET['id']);
+//    if GET[id] isset then pass it to the function, otherwise pass nothing
+    $categoryVisibility = getDataFromDB::getCategoryVisibility(isset($_GET['id'])?:$_GET['id']);
     echo $twig->render('admin/category-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'visibility'=> $categoryVisibility]);
 
 

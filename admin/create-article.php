@@ -27,7 +27,9 @@
 
         }
     }
-    $categoryList=getDataFromDB::getSelectedArticleCategory($_GET['id']);
+
+    //    if GET[id] isset then pass it to the function, otherwise pass nothing
+    $categoryList=getDataFromDB::getSelectedArticleCategory(isset($_GET['id'])?:$_GET['id']);
     //var_dump($result[0]->body);exit;
     //get the same template used to update an article but pass no article data
     //phpself is important so that the php file can get the post request from the twig template
