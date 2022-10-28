@@ -1,7 +1,15 @@
-<img src="../assets/images/{{ article.header_image }}"/>
-<h1>
-    {{ article.title }}
-</h1>
-<p>
-    {{ article.body }}
-</p>
+<div class="col-12">
+    <div class="row header-image">
+        <img src="../assets/images/{{ article.header_image }}"/>
+    </div>
+    <div class="row">
+        <h1 class="article-header">
+            {{ article.title }}
+        </h1>
+    </div>
+    <p>
+    <div class="row">
+        {{ article.body }}
+    </div>
+    </p>
+</div>
