@@ -105,6 +105,21 @@ class getDataFromDB
         } catch (PDOException $e) {
             echo "<br>" . $e->getMessage();
         }
+    }    public static function getSelectedArticleCategory($id)
+    {
+        try {
+            //get the selected category of a single article and the other categories
+            $db = DBConnect::setConnection();
+            $select = $db->prepare('SELECT c.id, c.category_name  FROM '.
+                '(select * from articles where id ='.$id.') as a '.
+                'RIGHT JOIN categories c on c.id =a.category_id '.
+                'order by a.id desc');
+            $select->execute();
+
+            return $select->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
     }
 
     public static function getMenuCategories()

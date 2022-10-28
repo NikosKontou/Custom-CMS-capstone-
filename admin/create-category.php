@@ -20,7 +20,9 @@
         insertDataToDB::createCategory( dataValidation::rmvSpclChars($_POST['categoryName']), dataValidation::rmvSpclChars($_POST['categoryVisibility']), dataValidation::rmvSpclChars($_POST['categoryOrder']));
 
     }
-    echo $twig->render('admin/category-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF'])]);
+
+    $categoryVisibility = getDataFromDB::getCategoryVisibility($_GET['id']);
+    echo $twig->render('admin/category-edit.html.twig',['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'visibility'=> $categoryVisibility]);
 
 
     ?>

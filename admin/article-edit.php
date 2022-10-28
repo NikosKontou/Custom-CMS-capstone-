@@ -30,8 +30,9 @@ if (isset($_POST['editArticle']) && isset($_POST['title']) && isset($_POST['body
 
 //get the article from the DB
 if (isset($_GET['id'])){
-    $categoryList=getDataFromDB::getCategories();
+    $categoryList=getDataFromDB::getSelectedArticleCategory($_GET['id']);
     $result = getDataFromDB::getSingleArticle($_GET['id']);
+
 //        var_dump($result);exit();
 //var_dump($result[0]->body);exit;
 //display it in the template
