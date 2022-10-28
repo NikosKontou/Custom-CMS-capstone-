@@ -20,7 +20,7 @@
         //if file size is smaller than one byte, do not upload the image
         if ($_FILES['imageToUpload']['size']>1) {
             if (dataValidation::imageCheck($_FILES['imageToUpload'])) {
-                insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars(basename($_FILES["imageToUpload"]["name"])), $_POST['categorySelector'], $_SESSION['id']);
+                insertDataToDB::createArticle($_POST['title'], $_POST['body'], htmlspecialchars(basename($_FILES["imageToUpload"]["name"])), $_POST['categorySelector'], $_SESSION['id'], session::getCurrentTimestamp());
             }
         } else{
             insertDataToDB::createArticleWithoutImage($_POST['title'], $_POST['body'], $_POST['categorySelector'], $_SESSION['id']);

@@ -17,8 +17,13 @@ class Session{
         }
     }
 
+    public static function getCurrentTimestamp(): string
+    {
+        return date('Y-m-d H:i:s',time());
 
+    }
 }
+
 function init(): void
 {
     if (!isset($_SESSION['menu_items'])){
