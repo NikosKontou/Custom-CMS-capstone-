@@ -23,12 +23,15 @@
     </div>
     <div class="row">
         <div class="col-6">
+
             <div class="form-group">
                 <label for="categoryVisibility">Visibility</label>
+
                 <select name ="categoryVisibility" id ="categoryVisibility">
-                        {{ visibility }}
-                        <option value=1>Visible</option>
-                        <option value=0>Hidden</option>
+{#                    the database has prepared the previously selected element to be at the top so that the user does not have to change to the desired option every time s/he edits#}
+                    {% for visible in visibility %}
+                        <option value={{ visible.visibility}} >{{ visible.visibility_name}}</option>
+                    {% endfor %}
 
                 </select>
                 {#        <input name="categorySelector" class="form-control"  >#}
