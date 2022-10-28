@@ -4,7 +4,7 @@ class insertDataToDB
 //every update database job should be stored here and called via the class as a static function
 {
 
-    public static function createArticle($title, $body, $image, $CID, $UID, $time)
+    public static function createArticle($title, $body, $image, $CID, $UID)
     {
         try {
             //set an article
@@ -16,6 +16,7 @@ class insertDataToDB
             $insert->bindParam('image', $image, PDO::PARAM_STR);
             $insert->bindParam('created_by', $UID, PDO::PARAM_INT);
             $insert->bindParam('category', $CID, PDO::PARAM_INT);
+            $time = session::getCurrentTimestamp();
             $insert->bindParam('time', $time, PDO::PARAM_STR);
 //        var_dump($update);exit();
             $insert->execute();
@@ -64,12 +65,14 @@ class insertDataToDB
         try {
             //set an article
             $db = DBConnect::setConnection();
-            $insert = $db->prepare('insert into articles (title, body, category_id, created_by) values (:title, :body, :category, :created_by)');
+            $insert = $db->prepare('insert into articles (title, body, category_id, created_by, created_time) values (:title, :body, :category, :created_by, :time)');
 
             $insert->bindParam('title', $title, PDO::PARAM_STR);
             $insert->bindParam('body', $body, PDO::PARAM_STR);
             $insert->bindParam('created_by', $UID, PDO::PARAM_INT);
             $insert->bindParam('category', $CID, PDO::PARAM_INT);
+            $time = session::getCurrentTimestamp();
+            $insert->bindParam('time', $time, PDO::PARAM_STR);
 //        var_dump($update);exit();
             $insert->execute();
 
