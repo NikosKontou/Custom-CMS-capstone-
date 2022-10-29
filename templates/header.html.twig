@@ -1,13 +1,30 @@
+{#in order to access the vairables outside the loop, they have to be initialiseb beforehand#}
+{% set slogan='' %}
+{% set name='' %}
+{% set siteColor='' %}
+{% set accentColor='' %}
+
+{% for item in properties %}
+    {% if item.key == 'site_slogan' %}
+        {% set slogan = item.value %}
+    {% elseif item.key =='site_name' %}
+        {% set name = item.value %}
+    {% elseif item.key =='site_color' %}
+        {% set siteColor = item.value %}
+    {% elseif item.key =='accent_color' %}
+        {% set accentColor = item.value %}
+    {% endif %}
+{% endfor %}
 <header>
-    <div class="bg-warning py-2">
+    <div class="bg-warning py-2" style="background: {{ accentColor }}">
         <div class="container">
-            Some top header info
+            {{ slogan }}
         </div>
     </div>
 
-    <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-primary" style="background: {{ siteColor }}">
         <div class="container">
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="/">{{ name }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
                 <span class="navbar-toggler-icon"></span>
             </button>

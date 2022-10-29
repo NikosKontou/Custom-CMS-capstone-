@@ -23,6 +23,7 @@
         $email= (filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)!='')?(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)):'';
         $siteName= (htmlspecialchars($_POST['siteName'])!='')?(htmlspecialchars($_POST['siteName'])):'';
         $siteColor= ($_POST['siteColor'])!=''?($_POST['siteColor']):'';
+        $accentColor= ($_POST['accentColor'])!=''?($_POST['accentColor']):'';
         $site_slogan= (htmlspecialchars($_POST['siteSlogan'])!='')?(htmlspecialchars($_POST['siteSlogan'])):'';
         $siteInfo= (htmlspecialchars($_POST['siteInfo'])!='')?(htmlspecialchars($_POST['siteInfo'])):'';
         $address= (htmlspecialchars($_POST['address'])!='')?(htmlspecialchars($_POST['address'])):'';
@@ -41,13 +42,13 @@
                         echo"<script>console.log('valid')</script>";
                         $siteLogo = dataValidation::rmvSpclChars($_FILES['logoToUpload']['name']);
                         updateDataDromDb::setPageProperties($facebook,
-                            $instagram, $email, $siteName, $siteColor, $siteLogo, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo);
+                            $instagram, $email, $siteName, $siteColor, $siteLogo, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo, $accentColor);
                     }
                 }
             else{
                 echo"<script>console.log('not set')</script>";
                 updateDataDromDb::setPagePropertiesWithoutImage($facebook,
-                    $instagram, $email, $siteName, $siteColor, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo);
+                    $instagram, $email, $siteName, $siteColor, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo, $accentColor);
 
             }
 

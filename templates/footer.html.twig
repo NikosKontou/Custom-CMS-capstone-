@@ -23,7 +23,7 @@
     {% elseif item.key =='phone' %}
         {% set phone = item.value %}
     {% elseif item.key =='site_info' %}
-        {% set phone = item.value %}
+        {% set siteInfo = item.value %}
     {% endif %}
 {% endfor %}
 <div class="mt-5 pt-5 pb-5 footer" style="background: {{ siteColor }}">
@@ -32,7 +32,7 @@
             <div class="col-lg-5 col-xs-12 about-company">
 {#                <h2>Heading</h2>#}
                 {% if siteInfo is defined %}
-                <p class="pr-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis </p>
+                <p class="pr-5 text-white-50">{{ siteInfo }}</p>
                 {% endif %}
             </div>
             <div class="col-lg-3 col-xs-12 links">

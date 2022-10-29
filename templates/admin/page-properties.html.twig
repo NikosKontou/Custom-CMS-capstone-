@@ -11,7 +11,7 @@
     </div>
     <div class="form-group">
         <label for="siteSlogan">Site information</label>
-        <textarea class="form-control" id="siteInfo" name="siteInfo" rows="1">{{ properties[11].value }}</textarea>
+        <textarea class="form-control" id="siteInfo" name="siteInfo" rows="1">{{ properties[10].value }}</textarea>
         <small id="infoHelp" class="form-text text-muted">It will be displayed at the bottom left of the footer</small>
     </div>
     <div class="form-group">
@@ -19,6 +19,11 @@
         <input name="siteColor" id="siteColor" type="color" value="{{properties[4].value }}">
 {#        <textarea class="form-control" id="siteColor" rows="1">{{ properties[4].value }}</textarea>#}
         <small id="colorHelp" class="form-text text-muted">Be creative!</small>
+    </div>
+    <div class="form-group">
+        <label for="accentColor">Accent color</label>
+        <input name="accentColor" id="accentColor" type="color" value="{{properties[11].value }}">
+        <small id="accentColorHelp" class="form-text text-muted">a shade of the primary color is recommended</small>
     </div>
     <div class="form-group">
         <label for="logoToUpload">Logo</label>
@@ -38,9 +43,9 @@
 
     <div class="form-group">
         <label for="phone">Phone</label>
-        <textarea class="form-control" id="phone" name="phone" rows="1">{{ properties[10].value }}</textarea>
+        <textarea class="form-control" id="phone" name="phone" rows="1">{{ properties[9].value }}</textarea>
         <input class="form-check-input" type="checkbox" id="phoneCheckBox" name="phoneCheckBox" value="1"
-                {% if properties[10].visibility == 1 %} checked {% endif %}>
+                {% if properties[9].visibility == 1 %} checked {% endif %}>
         <label class="form-check-label" for="phoneCheckBox">Visible</label>
     </div>
 
