@@ -68,12 +68,12 @@ class updateDataDromDb
     }
 
     public static function setPageProperties($facebook,
-    $instagram, $email, $siteName, $siteColor, $siteLogo, $siteSlogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox)
+    $instagram, $email, $siteName, $siteColor, $siteLogo, $siteSlogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo)
     {
         //update with "case" in order to not make multiple requests to the DB
         $db = DBConnect::setConnection();
         try {
-            $where = "where id = 1 or id =2 or id =3 or id =4 or id =5 or id =6 or id =7 or id =8 or id =10";
+            $where = "where id = 1 or id =2 or id =3 or id =4 or id =5 or id =6 or id =7 or id =8 or id =10 or id=11 or id=12";
             $update = $db->prepare("update site_properties set value = CASE" .
                 " WHEN id=1 THEN '" . $facebook .
                 "' WHEN id=2 THEN '" . $instagram .
@@ -84,6 +84,8 @@ class updateDataDromDb
                 "' WHEN id=7 THEN '" . $siteSlogan .
                 "' WHEN id=8 THEN '" . $address .
                 "' WHEN id=10 THEN '" . $twitter .
+                "' WHEN id=11 THEN '" . $phone .
+                "' WHEN id=11 THEN '" . $siteInfo .
                 "' END ".$where);
             $update->execute();
             echo $update->rowCount() . " records UPDATED successfully";
@@ -97,7 +99,9 @@ class updateDataDromDb
                 " WHEN id=7 THEN 1".
                 " WHEN id=8 THEN 1".
                 " WHEN id=10 THEN '" . $twitterBox .
-                "' END ".$where);
+                "' WHEN id=11 THEN '" . $phoneBox .
+                "' WHEN id=12 THEN 1" .
+                " END ".$where);
             $update->execute();
             echo $update->rowCount() . " records UPDATED successfully";
         } catch (PDOException $e) {
@@ -105,9 +109,9 @@ class updateDataDromDb
         }
     }
     public static function setPagePropertiesWithoutImage($facebook,
-   $instagram, $email, $siteName, $siteColor, $siteSlogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox): void
+   $instagram, $email, $siteName, $siteColor, $siteSlogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox,$siteInfo): void
     {
-        $where = "where id = 1 or id =2 or id =3 or id =4 or id =5 or id =7 or id =8 or id =10";
+        $where = "where id = 1 or id =2 or id =3 or id =4 or id =5 or id =7 or id =8 or id =10 or id=11 or id=12";
         //alternate query in case the image was not updated
         $db = DBConnect::setConnection();
         try {
@@ -120,6 +124,8 @@ class updateDataDromDb
                 "' WHEN id=7 THEN '" . $siteSlogan .
                 "' WHEN id=8 THEN '" . $address .
                 "' WHEN id=10 THEN '" . $twitter .
+                "' WHEN id=11 THEN '" . $phone .
+                "' WHEN id=12 THEN '" . $siteInfo .
                 "' END ".$where);
 //            print_r($update);exit();
             $update->execute();
@@ -134,7 +140,9 @@ class updateDataDromDb
                 " WHEN id=7 THEN 1".
                 " WHEN id=8 THEN 1".
                 " WHEN id=10 THEN '" . $twitterBox .
-                "' END ".$where);
+                "' WHEN id=11 THEN '" . $phoneBox .
+                "' WHEN id=12 THEN 1" .
+                " END ".$where);
             $update->execute();
             echo $update->rowCount() . " records UPDATED successfully";
         } catch (PDOException $e) {

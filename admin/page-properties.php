@@ -24,12 +24,15 @@
         $siteName= (htmlspecialchars($_POST['siteName'])!='')?(htmlspecialchars($_POST['siteName'])):'';
         $siteColor= ($_POST['siteColor'])!=''?($_POST['siteColor']):'';
         $site_slogan= (htmlspecialchars($_POST['siteSlogan'])!='')?(htmlspecialchars($_POST['siteSlogan'])):'';
+        $siteInfo= (htmlspecialchars($_POST['siteInfo'])!='')?(htmlspecialchars($_POST['siteInfo'])):'';
         $address= (htmlspecialchars($_POST['address'])!='')?(htmlspecialchars($_POST['address'])):'';
+        $phone= (htmlspecialchars($_POST['phone'])!='')?(htmlspecialchars($_POST['phone'])):'';
         $twitter= (filter_var($_POST['twitter'], FILTER_SANITIZE_URL)!='')?(filter_var($_POST['twitter'], FILTER_SANITIZE_URL)):'';
         //boxes do not require sanitization because their value is not read
         $facebookBox= (isset($_POST['facebookCheckBox']))?'1':'0';
         $instagramBox= (isset($_POST['instagramCheckBox']))?'1':'0';
         $twitterBox= (isset($_POST['twitterCheckBox']))?'1':'0';
+        $phoneBox= (isset($_POST['phoneCheckBox']))?'1':'0';
 
 
         if(($_FILES['logoToUpload']['size']> 1)){
@@ -38,13 +41,13 @@
                         echo"<script>console.log('valid')</script>";
                         $siteLogo = dataValidation::rmvSpclChars($_FILES['logoToUpload']['name']);
                         updateDataDromDb::setPageProperties($facebook,
-                            $instagram, $email, $siteName, $siteColor, $siteLogo, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox);
+                            $instagram, $email, $siteName, $siteColor, $siteLogo, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo);
                     }
                 }
             else{
                 echo"<script>console.log('not set')</script>";
                 updateDataDromDb::setPagePropertiesWithoutImage($facebook,
-                    $instagram, $email, $siteName, $siteColor, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox);
+                    $instagram, $email, $siteName, $siteColor, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo);
 
             }
 
