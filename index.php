@@ -25,6 +25,9 @@ echo $twig->render('index.html.twig', ['articles' => $result]);
 ?>
 </div>
 </body>
+<?php
+require_once("lib/headerFooter/footer.php");
+?>
 </html>
 
 <?php

@@ -145,5 +145,18 @@ class getDataFromDB
         }
     }
 
+    public static function getFooterDetails(){
+        try {
+            $db = DBConnect::setConnection();
+            $select = $db->prepare("select value, `key` from site_properties sp".
+                " where visibility >0 ".
+                " order by id ASC");
+            $select->execute();
+            return $select->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
+    }
+
 
 }

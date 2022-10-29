@@ -46,8 +46,7 @@
 </div> <!-- /container -->
 <?php
 //call the header template
-echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'username' => (isset($_SESSION['username'])) ? $_SESSION['username'] : null, 'userID' => (isset($_SESSION['id'])) ? $_SESSION['id'] : null]);
-?>
+require_once("lib/headerFooter/header.php");?>
 <div class = "container">
 
     <?php
@@ -60,6 +59,9 @@ echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PH
 
 
 </body>
+<?php
+require_once("lib/headerFooter/footer.php");
+?>
 </html>
 
 <?php

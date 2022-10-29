@@ -14,7 +14,7 @@
 <?php
 //call the header template
 //if the session variables are not set, pass null
-echo $twig->render('header.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'username' => (isset($_SESSION['username'])) ? $_SESSION['username'] : null, 'userID' => (isset($_SESSION['id'])) ? $_SESSION['id'] : null] );
+require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
 //find the requested article
 $result = getDataFromDB::getSingleArticle($_GET['id']);
@@ -24,6 +24,9 @@ echo $twig->render('article.html.twig',['article'=>$result[0]]);
 ?>
 </div>
 </body>
+<?php
+require_once("lib/headerFooter/footer.php");
+?>
 </html>
 
 <?php
