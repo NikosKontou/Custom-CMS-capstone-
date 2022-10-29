@@ -40,16 +40,14 @@ require_once("../lib/headerFooter/adminMenu.php");
 
 
         if(($_FILES['logoToUpload']['size']> 1)){
-                    echo"<script>console.log('>1')</script>";
                     if (dataValidation::imageCheck($_FILES['logoToUpload'])) {
                         echo"<script>console.log('valid')</script>";
-                        $siteLogo = dataValidation::rmvSpclChars($_FILES['logoToUpload']['name']);
+                        $siteLogo = htmlspecialchars($_FILES['logoToUpload']['name']);
                         updateDataDromDb::setPageProperties($facebook,
                             $instagram, $email, $siteName, $siteColor, $siteLogo, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo, $accentColor);
                     }
                 }
             else{
-                echo"<script>console.log('not set')</script>";
                 updateDataDromDb::setPagePropertiesWithoutImage($facebook,
                     $instagram, $email, $siteName, $siteColor, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox, $phone, $phoneBox, $siteInfo, $accentColor);
 

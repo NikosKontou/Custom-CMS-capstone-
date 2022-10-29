@@ -92,8 +92,8 @@ class updateDataDromDb
             echo $update->rowCount() . " records UPDATED successfully";
             $update = $db->prepare("update site_properties set visibility = CASE" .
                 " WHEN id=1 THEN " . $facebookBox .
-                "' WHEN id=2 THEN " . $instagramBox .
-                "' WHEN id=3 THEN 1".
+                " WHEN id=2 THEN " . $instagramBox .
+                " WHEN id=3 THEN 1".
                 " WHEN id=4 THEN 1".
                 " WHEN id=5 THEN 1".
                 " WHEN id=6 THEN 1".

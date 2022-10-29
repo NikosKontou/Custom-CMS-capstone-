@@ -3,6 +3,7 @@
 {% set name='' %}
 {% set siteColor='' %}
 {% set accentColor='' %}
+{% set logoUri='' %}
 
 {% for item in properties %}
 
@@ -14,6 +15,8 @@
         {% set siteColor = item.value %}
     {% elseif item.key =='accent_color' %}
         {% set accentColor = item.value %}
+    {% elseif item.key =='site_logo' %}
+        {% set logoUri = item.value %}
     {% endif %}
 {% endfor %}
 <header>
@@ -25,7 +28,7 @@
 {#bootstrap allready implements the "!important" css option, so in order to overwrite it, it must be implemented again#}
     <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-primary" style="background: {{ siteColor }}!important">
         <div class="container">
-            <a class="navbar-brand" href="/">{{ name }}</a>
+            <a class="navbar-brand" href="/"><img src="/assets/images/{{ logoUri}}" alt="{{ name }}" style="height: 60px;"/> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
                 <span class="navbar-toggler-icon"></span>
             </button>
