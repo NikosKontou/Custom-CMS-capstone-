@@ -1,0 +1,22 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/admin/articles.php"> Articles </a></li>
+                <li class="nav-item"><a class="nav-link" href="/admin/categories.php"> Categories </a></li>
+                <li class="nav-item"><a class="nav-link" href="/admin/page-properties.php"> Basic settings </a></li>
+            </ul>
+        </div> <!-- navbar-collapse.// -->
+    </div> <!-- container-fluid.// -->
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        // add padding top to show content behind navbar
+        navbar_height = document.querySelector('.navbar').offsetHeight;
+        document.body.style.paddingTop = navbar_height + 'px';
+    });
+</script>

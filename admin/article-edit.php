@@ -11,6 +11,9 @@
 
 </head>
 <body>
+<?php
+require_once("../lib/headerFooter/adminMenu.php")
+?>
 <div class="container">
 <?php
 
