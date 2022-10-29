@@ -11,13 +11,11 @@
 <body>
 
 <?php
-if (!isset($_SESSION['menu_items'])){
-    $_SESSION['menu_items'] = getDataFromDB::getMenuCategories();
-}
+
 //call the header template
 //if the session variables are not set, pass null with the ternary operator
 
-echo $twig->render('header.html.twig', ['menuItems'=> $_SESSION['menu_items'], 'phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'username' => (isset($_SESSION['username'])) ? $_SESSION['username'] : null, 'userID' => (isset($_SESSION['id'])) ? $_SESSION['id'] : null] );
+require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
 //get every article from the DB
 $result = getDataFromDB::getArticles();

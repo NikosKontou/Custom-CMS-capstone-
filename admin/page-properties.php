@@ -15,28 +15,34 @@
     <?php
 
     $db = DBConnect::setConnection();
-
     if (isset($_POST['editProperties'])) {
-        $facebook= (dataValidation::rmvSpclChars($_POST['facebook'])!='')?(dataValidation::rmvSpclChars($_POST['facebook'])):'';
-        $instagram= (dataValidation::rmvSpclChars($_POST['instagram'])!='')?(dataValidation::rmvSpclChars($_POST['instagram'])):'';
+        //use php built-in function to sanitize urls
+        $facebook= (filter_var($_POST['facebook'], FILTER_SANITIZE_URL)!='')?(filter_var($_POST['facebook'], FILTER_SANITIZE_URL)):'';
+        $instagram= (filter_var($_POST['instagram'], FILTER_SANITIZE_URL)!='')?(filter_var($_POST['instagram'], FILTER_SANITIZE_URL)):'';
         //use php built-in function to sanitize mails
-        $email= (dataValidation::filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)!='')?(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)):'';
-        $siteName= (dataValidation::removeSpecialCharsRelaxed($_POST['siteName'])!='')?(dataValidation::rmvSpclChars($_POST['siteName'])):'';
-        $siteColor= (dataValidation::rmvSpclChars($_POST['siteColor'])!='')?(dataValidation::rmvSpclChars($_POST['siteColor'])):'';
-        $site_slogan= (dataValidation::removeSpecialCharsRelaxed($_POST['siteSlogan'])!='')?(dataValidation::rmvSpclChars($_POST['siteSlogan'])):'';
-        $address= (dataValidation::removeSpecialCharsRelaxed($_POST['address'])!='')?(dataValidation::rmvSpclChars($_POST['address'])):'';
-        $twitter= (dataValidation::rmvSpclChars($_POST['twitter'])!='')?(dataValidation::rmvSpclChars($_POST['twitter'])):'';
+        $email= (filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)!='')?(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)):'';
+        $siteName= (htmlspecialchars($_POST['siteName'])!='')?(htmlspecialchars($_POST['siteName'])):'';
+        $siteColor= ($_POST['siteColor'])!=''?($_POST['siteColor']):'';
+        $site_slogan= (htmlspecialchars($_POST['siteSlogan'])!='')?(htmlspecialchars($_POST['siteSlogan'])):'';
+        $address= (htmlspecialchars($_POST['address'])!='')?(htmlspecialchars($_POST['address'])):'';
+        $twitter= (filter_var($_POST['twitter'], FILTER_SANITIZE_URL)!='')?(filter_var($_POST['twitter'], FILTER_SANITIZE_URL)):'';
+        //boxes do not require sanitization because their value is not read
         $facebookBox= (isset($_POST['facebookCheckBox']))?'1':'0';
         $instagramBox= (isset($_POST['instagramCheckBox']))?'1':'0';
-        $twitterBox= (isset($_POST['twitterCheckbox']))?'1':'0';
+        $twitterBox= (isset($_POST['twitterCheckBox']))?'1':'0';
 
-            if(isset($_FILES['logoToUpload'])){
-                if($_FILES['logoToUpdate']>1){
-                    $siteLogo= dataValidation::rmvSpclChars($_FILES['logoToUpload']);
-                    updateDataDromDb::setPageProperties($facebook,
-                        $instagram, $email, $siteName, $siteColor, $siteLogo, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox);
+
+        if(($_FILES['logoToUpload']['size']> 1)){
+                    echo"<script>console.log('>1')</script>";
+                    if (dataValidation::imageCheck($_FILES['logoToUpload'])) {
+                        echo"<script>console.log('valid')</script>";
+                        $siteLogo = dataValidation::rmvSpclChars($_FILES['logoToUpload']['name']);
+                        updateDataDromDb::setPageProperties($facebook,
+                            $instagram, $email, $siteName, $siteColor, $siteLogo, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox);
+                    }
                 }
-            }else{
+            else{
+                echo"<script>console.log('not set')</script>";
                 updateDataDromDb::setPagePropertiesWithoutImage($facebook,
                     $instagram, $email, $siteName, $siteColor, $site_slogan, $address, $twitter, $facebookBox, $instagramBox, $twitterBox);
 

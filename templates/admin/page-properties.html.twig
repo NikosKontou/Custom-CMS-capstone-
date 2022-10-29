@@ -1,4 +1,5 @@
-<form role="form" action="{{ phpSelf }}" method="post" >
+{#without enctype=multipart/form data, file posting does not work#}
+<form role="form" action="{{ phpSelf }}" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="siteName">Site name</label>
         <textarea class="form-control" id="siteName" name="siteName" rows="1">{{ properties[3].value }}</textarea>
@@ -16,12 +17,12 @@
     </div>
     <div class="form-group">
         <label for="logoToUpload">Logo</label>
-        <input type="file" name="logoToUpload" id="logoToUpload">
-        <small id="colorHelp" class="form-text text-muted">150*100px recommended</small>
+        <input type="file" name="logoToUpload" id="logoUpload">
+        <small id="logoHelp" class="form-text text-muted">150*100px recommended</small>
     </div>
     <div class="form-group">
         <label for="contactMail">Email</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ properties[2].value }}">
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="{{ properties[2].value }}">
         <small id="nameHelp" class="form-text text-muted">it will be displayed as contact information a the footer</small>
     </div>
     <div class="form-group">
