@@ -1,3 +1,10 @@
+{#in order to access the vairables outside the loop, they have to be initialiseb beforehand#}
+{% set facebook='' %}
+{% set instagram='' %}
+{% set twitter='' %}
+{% set email='' %}
+{% set siteColor='' %}
+{% set address='' %}
 {% for item in footerItems %}
     {% if item.key == 'Facebook' %}
         {% set facebook = item.value %}
@@ -11,7 +18,6 @@
         {% set siteColor = item.value %}
     {% elseif item.key =='address' %}
         {% set address = item.value %}
-
     {% endif %}
 {% endfor %}
 <div class="mt-5 pt-5 pb-5 footer" style="background: {{ siteColor }}">

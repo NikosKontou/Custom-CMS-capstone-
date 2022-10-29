@@ -23,12 +23,17 @@ class Session{
 
     }
 }
-
+//get important site data at the start of a session
 function init(): void
 {
     if (!isset($_SESSION['menu_items'])){
         $_SESSION['menu_items'] = getDataFromDB::getCategories();
     }
+    if(!isset($_SESSION['site_items'])){
+        $_SESSION['site_items'] = getDataFromDB::getVisibleSiteDetails();
+
+    }
 }
+
 init();
 ?>

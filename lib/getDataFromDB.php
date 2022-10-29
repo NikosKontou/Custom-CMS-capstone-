@@ -145,7 +145,7 @@ class getDataFromDB
         }
     }
 
-    public static function getFooterDetails(){
+    public static function getVisibleSiteDetails(){
         try {
             $db = DBConnect::setConnection();
             $select = $db->prepare("select value, `key` from site_properties sp".
