@@ -46,8 +46,10 @@
 </div> <!-- /container -->
 <?php
 //call the header template
-if($_SESSION['accessLevel']==2){
-    require_once("lib/headerFooter/adminMenu.php");
+if(isset($_SESSION['accessLevel'])){
+    if($_SESSION['accessLevel']==2){
+        require_once("lib/headerFooter/adminMenu.php");
+    }
 }
 require_once("lib/headerFooter/header.php");?>
 <div class = "container">

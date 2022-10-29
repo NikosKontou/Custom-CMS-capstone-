@@ -11,12 +11,15 @@
 <body>
 
 <?php
+if(isset($_SESSION['accessLevel'])){
+    if($_SESSION['accessLevel']==2){
+        require_once("lib/headerFooter/adminMenu.php");
+    }
+}
 
 //call the header template
 //if the session variables are not set, pass null with the ternary operator
-if($_SESSION['accessLevel']==2){
-    require_once("lib/headerFooter/adminMenu.php");
-}
+
 require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
 //get every article from the DB
