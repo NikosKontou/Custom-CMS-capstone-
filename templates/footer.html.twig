@@ -1,4 +1,20 @@
-<div class="mt-5 pt-5 pb-5 footer">
+{% for item in footerItems %}
+    {% if item.key == 'Facebook' %}
+        {% set facebook = item.value %}
+    {% elseif item.key =='Instagram' %}
+        {% set instagram = item.value %}
+    {% elseif item.key =='Twitter' %}
+        {% set twitter = item.value %}
+    {% elseif item.key =='email' %}
+        {% set email = item.value %}
+    {% elseif item.key =='site_color' %}
+        {% set siteColor = item.value %}
+    {% elseif item.key =='address' %}
+        {% set address = item.value %}
+
+    {% endif %}
+{% endfor %}
+<div class="mt-5 pt-5 pb-5 footer" style="background: {{ siteColor }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-xs-12 about-company">
@@ -9,15 +25,17 @@
             <div class="col-lg-3 col-xs-12 links">
                 <h4 class="mt-lg-0 mt-sm-3">Links</h4>
                 <ul class="m-0 p-0">
-                {% for item in footerItems %}
-                    {% if item.key == 'Facebook' %}
-                    <li>- <a href="{{ item.value }}">Facebook</a></li>
-                    {% elseif item.key =='Instagram' %}
-                        <li>- <a href="{{ item.value }}">Instagram</a></li>
-                    {% elseif item.key =='Twitter' %}
-                        <li>- <a href="{{ item.value }}">Twitter</a></li>
 
-                {% endfor %}
+                    {% if facebook is defined %}
+                    <li>- <a href="{{ facebook }}">Facebook</a></li>
+                    {% endif %}
+                    {% if instagram is defined %}
+                        <li>- <a href="{{ instagram }}">Instagram</a></li>
+                    {% endif %}
+                    {% if item.key =='Twitter' %}
+                        <li>- <a href="{{ twitter }}">Twitter</a></li>
+                    {% endif %}
+
                 </ul>
             </div>
             <div class="col-lg-4 col-xs-12 location">
