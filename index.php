@@ -17,6 +17,7 @@ if(isset($_SESSION['accessLevel'])){
     }
 }
 $promotedRes = getDataFromDB::getPromotedArticles();
+//print_r($promotedRes);exit;
 //call the header template
 //if the session variables are not set, pass null with the ternary operator
 

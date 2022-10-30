@@ -1,52 +1,53 @@
 <div class="main-promoted col-12 pb-5">
-        <div class="row">
-    <div class="col-5">
-        {#    display the image #}
-        <img src="../assets/images/{{ promoted[0]['header_image'] }}" class="top-promoted-image"/>
-        {#    send the GET to article.php so it can be retrieved by the database #}
-        <h3><a href="article.php?id={{ article[0]['id'] }}">
-{#                limit the title to 70 characters#}
-                {{ promoted[0]['title'] |slice(0,70)}} </a>
-        </h3>
-    </div>
-            {% if promoted[1] is defined %}
+    <div class="row">
+        <div class="col-5">
+            {#    display the image #}
+            <img src="../assets/images/{{ promoted[0]['header_image'] }}" class="top-promoted-image"/>
+            {#    send the GET to article.php so it can be retrieved by the database #}
+            <h3><a href="article.php?id={{ promoted[0]['id'] }}">
+                    {#                limit the title to 70 characters #}
+                    {{ promoted[0]['title'] |slice(0,70) }} </a>
+            </h3>
+        </div>
+        {% if promoted[1] is defined %}
             <div class="col-7">
                 <div class="row">
                     <div class="col-6">
                         <img src="../assets/images/{{ promoted[1]['header_image'] }}" class="small-promoted-image"/>
-                        <h4><a href="article.php?id={{ article[1]['id'] }}">
+                        <h4><a href="article.php?id={{ promoted[1]['id'] }}">
                                 {{ promoted[1]['title'] }} </a>
                         </h4>
                     </div>
                     {% if promoted[2] is defined %}
                     <div class="col-6">
                         <img src="../assets/images/{{ promoted[2]['header_image'] }}" class="small-promoted-image"/>
-                        <h4><a href="article.php?id={{ article[2]['id'] }}">
+                        <h4><a href="article.php?id={{ promoted[2]['id'] }}">
                                 {{ promoted[2]['title'] }} </a>
                         </h4>
                     </div>
                 </div>
-                {%  if promoted[3] is defined %}
-                <div class="row">
-                    <div class="col-6">
-                        <img src="../assets/images/{{ promoted[3]['header_image'] }}" class="small-promoted-image"/>
-                        <h4><a href="article.php?id={{ article[3]['id'] }}">
-                                {{ promoted[3]['title'] }} </a>
-                        </h4>
+                {% if promoted[3] is defined %}
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="../assets/images/{{ promoted[3]['header_image'] }}" class="small-promoted-image"/>
+                            <h4><a href="article.php?id={{ promoted[3]['id'] }}">
+                                    {{ promoted[3]['title'] }} </a>
+                            </h4>
+                        </div>
+                        {% if promoted[4] is defined %}
+                            <div class="col-6">
+                                <img src="../assets/images/{{ promoted[4]['header_image'] }}"
+                                     class="small-promoted-image"/>
+                                <h4><a href="article.php?id={{ promoted[4]['id'] }}">
+                                        {{ promoted[4]['title'] }} </a>
+                                </h4>
+                            </div>
+                        {% endif %}
                     </div>
-                    {% if promoted[4] is defined %}
-                    <div class="col-6">
-                        <img src="../assets/images/{{ promoted[4]['header_image'] }}" class="small-promoted-image"/>
-                        <h4><a href="article.php?id={{ article[4]['id'] }}">
-                                {{ promoted[4]['title'] }} </a>
-                        </h4>
-                    </div>
-                    {% endif %}
-                </div>
                 {% endif %}
                 {% endif %}
             </div>
-            {% endif %}
-        </div>
+        {% endif %}
+    </div>
 
 </div>

@@ -4,18 +4,19 @@ class insertDataToDB
 //every update database job should be stored here and called via the class as a static function
 {
 
-    public static function createArticle($title, $body, $image, $CID, $UID)
+    public static function createArticle($title, $body, $image, $CID, $UID, $promotedBox)
     {
         try {
             //set an article
             $db = DBConnect::setConnection();
-            $insert = $db->prepare('insert into articles (title, body, header_image, category_id, created_by, created_time) values (:title, :body, :image, :category, :created_by, :time)');
+            $insert = $db->prepare('insert into articles (title, body, header_image, category_id, created_by, created_time, promoted) values (:title, :body, :image, :category, :created_by, :time, :promoted)');
 
             $insert->bindParam('title', $title, PDO::PARAM_STR);
             $insert->bindParam('body', $body, PDO::PARAM_STR);
             $insert->bindParam('image', $image, PDO::PARAM_STR);
             $insert->bindParam('created_by', $UID, PDO::PARAM_INT);
             $insert->bindParam('category', $CID, PDO::PARAM_INT);
+            $insert->bindParam('promoted', $promotedBox, PDO::PARAM_INT);
             $time = session::getCurrentTimestamp();
             $insert->bindParam('time', $time, PDO::PARAM_STR);
 //        var_dump($update);exit();
@@ -60,17 +61,19 @@ class insertDataToDB
     }
 
 
-    public static function createArticleWithoutImage($title, $body, $CID, $UID)
+    public static function createArticleWithoutImage($title, $body, $CID, $UID, $promotedBox)
     {
         try {
             //set an article
             $db = DBConnect::setConnection();
-            $insert = $db->prepare('insert into articles (title, body, category_id, created_by, created_time) values (:title, :body, :category, :created_by, :time)');
+            $insert = $db->prepare('insert into articles (title, body, category_id, created_by, created_time, promoted) values (:title, :body, :category, :created_by, :time, :promoted)');
 
             $insert->bindParam('title', $title, PDO::PARAM_STR);
             $insert->bindParam('body', $body, PDO::PARAM_STR);
             $insert->bindParam('created_by', $UID, PDO::PARAM_INT);
+            $insert->bindParam('created_by', $UID, PDO::PARAM_INT);
             $insert->bindParam('category', $CID, PDO::PARAM_INT);
+            $insert->bindParam('promoted', $promotedBox, PDO::PARAM_INT);
             $time = session::getCurrentTimestamp();
             $insert->bindParam('time', $time, PDO::PARAM_STR);
 //        var_dump($update);exit();

@@ -24,7 +24,7 @@ class getDataFromDB
         try {
             //get only the 5 most recent promoted articles
             $db = DBConnect::setConnection();
-            $select = $db->prepare('select title, header_image from articles a '.
+            $select = $db->prepare('select id, title, header_image from articles a '.
                 'where promoted = 1 '.
                 'order by created_time DESC '.
                 'limit 5');
