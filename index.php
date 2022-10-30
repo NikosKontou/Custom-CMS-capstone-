@@ -16,12 +16,13 @@ if(isset($_SESSION['accessLevel'])){
         require_once("lib/headerFooter/adminMenu.php");
     }
 }
-
+$promotedRes = getDataFromDB::getPromotedArticles();
 //call the header template
 //if the session variables are not set, pass null with the ternary operator
 
 require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
+echo $twig->render('index.html.twig', ['promoted' => $promotedRes]);
 //get every article from the DB
 $result = getDataFromDB::getArticles();
 //display it in the template

@@ -1,0 +1,43 @@
+<div class="col-12">
+        <div class="row">
+    <div class="main-promoted col-5">
+        {#    display the image #}
+        <img src="../assets/images/{{ promoted[0]['header_image'] }}" class="top-promoted-image"/>
+        {#    send the GET to article.php so it can be retrieved by the database #}
+        <h3><a href="article.php?id={{ article[0]['id'] }}">
+                {{ promoted[0]['title'] }} </a>
+        </h3>
+    </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="../assets/images/{{ promoted[1]['header_image'] }}" class="top-promoted-image"/>
+                        <h3><a href="article.php?id={{ article[1]['id'] }}">
+                                {{ promoted[1]['title'] }} </a>
+                        </h3>
+                    </div>
+                    <div class="col-6">
+                        <img src="../assets/images/{{ promoted[2]['header_image'] }}" class="top-promoted-image"/>
+                        <h3><a href="article.php?id={{ article[2]['id'] }}">
+                                {{ promoted[2]['title'] }} </a>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <img src="../assets/images/{{ promoted[3]['header_image'] }}" class="top-promoted-image"/>
+                        <h3><a href="article.php?id={{ article[3]['id'] }}">
+                                {{ promoted[3]['title'] }} </a>
+                        </h3>
+                    </div>
+                    <div class="col-6">
+                        <img src="../assets/images/{{ promoted[4]['header_image'] }}" class="top-promoted-image"/>
+                        <h3><a href="article.php?id={{ article[4]['id'] }}">
+                                {{ promoted[4]['title'] }} </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
