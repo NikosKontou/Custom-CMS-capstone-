@@ -21,14 +21,16 @@ require_once("../lib/headerFooter/adminMenu.php");
 $db = DBConnect::setConnection();
 
 if (isset($_POST['editArticle']) && isset($_POST['title']) && isset($_POST['body'])) {
+    $promotedBox= (isset($_POST['promotedBox']))?'1':'0';
+
     if(($_FILES['imageToUpload']['size']> 1)){
         if (dataValidation::imageCheck($_FILES['imageToUpload'])) {
 //            var_dump($_POST['categorySelector']);exit;
-            updateDataDromDb::setSingleArticle($_POST['id'], $_POST['title'], $_POST['body'], $_FILES['imageToUpload']["name"], $_POST['categorySelector']);
+            updateDataDromDb::setSingleArticle($_POST['id'], $_POST['title'], $_POST['body'], $_FILES['imageToUpload']["name"], $_POST['categorySelector'], $promotedBox);
         }
     }else{
 //        var_dump($_POST['categorySelector']);exit;
-        updateDataDromDb::setSingleArticleWithoutImage($_POST['id'], $_POST['title'], $_POST['body'], $_POST['categorySelector']);
+        updateDataDromDb::setSingleArticleWithoutImage($_POST['id'], $_POST['title'], $_POST['body'], $_POST['categorySelector'], $promotedBox);
     }
 }
 

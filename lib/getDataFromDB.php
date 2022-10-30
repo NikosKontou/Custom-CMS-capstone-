@@ -54,7 +54,7 @@ class getDataFromDB
     public static function getSingleArticle($id)
     {
         try {
-            //get a single article
+            //get a single article in order to edit it
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT * FROM articles where id =' . $id);
             $select->execute();
