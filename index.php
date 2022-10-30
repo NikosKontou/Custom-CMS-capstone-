@@ -5,7 +5,7 @@
     require_once("config.php");
 
     ?>
-    <title>index</title>
+    <title>Home</title>
 
 </head>
 <body>
@@ -22,7 +22,7 @@ $promotedRes = getDataFromDB::getPromotedArticles();
 
 require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
-echo $twig->render('index.html.twig', ['promoted' => $promotedRes]);
+echo $twig->render('promoted.html.twig', ['promoted' => $promotedRes]);
 //get every article from the DB
 $result = getDataFromDB::getArticles();
 //display it in the template

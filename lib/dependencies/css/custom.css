@@ -43,3 +43,13 @@
     object-fit: cover;
 
 }
+.top-promoted-image{
+    height: 450px;
+    width: 450px;
+    object-fit: cover;
+}
+.small-promoted-image{
+    height: 215px;
+    width: 215px;
+    object-fit: cover;
+}
