@@ -9,7 +9,9 @@ class getDataFromDB
         try {
             //get every article in the db
             $db = DBConnect::setConnection();
-            $select = $db->prepare('SELECT * FROM articles');
+            $select = $db->prepare('SELECT * FROM articles '.
+            'ORDER BY created_time DESC '.
+            'LIMIT 10');
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

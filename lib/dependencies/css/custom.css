@@ -44,12 +44,15 @@
 
 }
 .top-promoted-image{
-    height: 450px;
-    width: 450px;
+    height: 400px;
+    width: 500px;
     object-fit: cover;
 }
 .small-promoted-image{
     height: 215px;
-    width: 215px;
+    width: 360px;
     object-fit: cover;
+}
+.pb-5{
+    padding-bottom: 5rem;
 }
