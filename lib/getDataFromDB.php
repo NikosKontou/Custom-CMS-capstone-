@@ -18,6 +18,23 @@ class getDataFromDB
             echo "<br>" . $e->getMessage();
         }
     }
+    public static function getCategoryArticles($category)
+    {
+        try {
+            //get every article in the db
+            $db = DBConnect::setConnection();
+            $select = $db->prepare('SELECT a.id, a.title, a.body, a.created_time, a.header_image, c.category_name  from articles a '.
+                'inner join categories c on c.id =a.category_id  '.
+                'where c.category_name = :category_name '.
+                'order by a.created_time');
+//            print_r($select);exit;
+            $select->bindParam('category_name', $category, PDO::PARAM_STR);
+            $select->execute();
+            return $select->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
+    }
 
     public static function getPromotedArticles()
     {

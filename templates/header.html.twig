@@ -38,7 +38,9 @@
                     {% set break = false %}
                     {#limit the menu to 10 items#}
                     {% for item in menuItems|slice(0, 9)%}
-                    <li class="nav-item"><a class="nav-link" href="index.php?categoryName={{ item['category_name'] }}"> {{ item['category_name']}} </a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="category?c={{ item['category_name'] }}"> {{ item['category_name']}} </a>
+                    </li>
                     {% endfor %}
 {#                    if the username is set, the user is loged in and can see relative information#}
                     {% if username != null %}

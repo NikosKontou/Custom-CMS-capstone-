@@ -5,7 +5,8 @@
     require_once("config.php");
 
     ?>
-    <title>Home</title>
+<!--    display the current category name-->
+    <title><?php echo $_GET['c']?></title>
 
 </head>
 <body>
@@ -16,16 +17,11 @@ if (isset($_SESSION['accessLevel'])) {
         require_once("lib/headerFooter/adminMenu.php");
     }
 }
-$promotedRes = getDataFromDB::getPromotedArticles();
-//print_r($promotedRes);exit;
-//call the header template
-//if the session variables are not set, pass null with the ternary operator
 
 require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
-echo $twig->render('promoted.html.twig', ['promoted' => $promotedRes]);
 //get every article from the DB
-$result = getDataFromDB::getArticles();
+$result = getDataFromDB::getCategoryArticles($_GET['c']);
 //display it in the template
 echo $twig->render('index.html.twig', ['articles' => $result]);
 
