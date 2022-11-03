@@ -6,7 +6,7 @@
 
     ?>
 <!--    display the current category name-->
-    <title><?php echo $_GET['c']?></title>
+    <title><?php echo htmlspecialchars($_GET['c'])?></title>
 
 </head>
 <body>
@@ -23,6 +23,7 @@ echo("<div class='container'>");
 //get every article from the DB
 $result = getDataFromDB::getCategoryArticles($_GET['c']);
 //display it in the template
+echo $twig->render('category-name.html.twig', ['categoryName' => htmlspecialchars($_GET['c'])]);
 echo $twig->render('index.html.twig', ['articles' => $result]);
 
 ?>
