@@ -45,14 +45,17 @@
 }
 .top-promoted-image{
     height: 400px;
-    width: 520px;
+    width: 100%;
     object-fit: cover;
 }
 .small-promoted-image{
     height: 215px;
-    width: 360px;
+    width: 100%;
     object-fit: cover;
 }
-.pb-5{
-    padding-bottom: 5rem;
+.promoted-header{
+    padding: 2rem 0rem 0rem 0rem;
+}
+.main-promoted  a{
+    color: #000505;
 }

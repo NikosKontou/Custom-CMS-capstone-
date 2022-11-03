@@ -1,6 +1,7 @@
-<div class="main-promoted col-12 pb-5">
+<div class="promoted-header"><h2>Recommended reading</h2></div>
+<div class="main-promoted col-12 pt-3 pb-5">
     <div class="row">
-        <div class="col-5">
+        <div class="col-lg-5">
             {#    display the image #}
             <img src="../assets/images/{{ promoted[0]['header_image'] }}" class="top-promoted-image"/>
             {#    send the GET to article.php so it can be retrieved by the database #}
@@ -10,7 +11,7 @@
             </h3>
         </div>
         {% if promoted[1] is defined %}
-            <div class="col-7">
+            <div class="col-lg-7">
                 <div class="row">
                     <div class="col-6">
                         <img src="../assets/images/{{ promoted[1]['header_image'] }}" class="small-promoted-image"/>
