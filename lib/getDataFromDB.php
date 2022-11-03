@@ -3,22 +3,24 @@
 class getDataFromDB
 //every single database job should be stored here and called via the class as a static function
 {
-
-    public static function getArticles()
+    //offset used by pagination, if nothing is set, start from first post
+    public static function getArticles($offset = 0)
     {
         try {
             //get every article in the db
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT * FROM articles '.
             'ORDER BY created_time DESC '.
-            'LIMIT 10');
+            'LIMIT 10 OFFSET :offset');
+            $select->bindParam('offset', $offset, PDO::PARAM_INT);
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo "<br>" . $e->getMessage();
         }
     }
-    public static function getCategoryArticles($category)
+
+    public static function getCategoryArticles($category, $offset = 0)
     {
         try {
             //get every article in the db
@@ -26,9 +28,12 @@ class getDataFromDB
             $select = $db->prepare('SELECT a.id, a.title, a.body, a.created_time, a.header_image, c.category_name  from articles a '.
                 'inner join categories c on c.id =a.category_id  '.
                 'where c.category_name = :category_name '.
-                'order by a.created_time');
+                'order by a.created_time'.
+            'LIMIT 10 OFFSET :offset');
 //            print_r($select);exit;
             $select->bindParam('category_name', $category, PDO::PARAM_STR);
+
+            $select->bindParam('offset', $offset, PDO::PARAM_INT);
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
