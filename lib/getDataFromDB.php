@@ -13,6 +13,8 @@ class getDataFromDB
             'ORDER BY created_time DESC '.
             'LIMIT 3 OFFSET :offset');
             $select->bindParam('offset', $offset, PDO::PARAM_INT);
+            print_r($offset);
+//            exit;
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
