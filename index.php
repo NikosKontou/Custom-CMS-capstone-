@@ -17,12 +17,16 @@ if (isset($_SESSION['accessLevel'])) {
         require_once("lib/headerFooter/adminMenu.php");
     }
 }
+//get color option from siteItems
+Session::setSiteColors();
 //manage paggination
 $pager ='';
 if (isset($_GET['p'])){
-    $pager=((int)htmlspecialchars($_GET['p']))*10;
+    $pager=((int)htmlspecialchars($_GET['p']))*3;
+    $result = getDataFromDB::getArticles($pager);
 }else{
     $pager=0;
+    $result = getDataFromDB::getArticles();
 }
 $promotedRes = getDataFromDB::getPromotedArticles();
 //print_r($promotedRes);exit;
@@ -33,11 +37,11 @@ require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
 echo $twig->render('promoted.html.twig', ['promoted' => $promotedRes]);
 //get every article from the DB
-$result = getDataFromDB::getArticles($pager);
+
 //display it in the template
 echo $twig->render('index.html.twig', ['articles' => $result]);
 //ternary operator: if get is set then convert it to safe string and then int, else pass 0
-echo $twig->render('pagination.html.twig', ['currentPage'=>isset($_GET['p'])?(int)htmlspecialchars($_GET['p']):0]);
+echo $twig->render('pagination.html.twig', ['accentColor'=>$_SESSION['accent_color'], 'currentPage'=>isset($_GET['p'])?(int)htmlspecialchars($_GET['p']):0]);
 
 ?>
 </div>

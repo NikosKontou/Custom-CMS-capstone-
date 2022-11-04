@@ -22,6 +22,18 @@ class Session{
         return date('Y-m-d H:i:s',time());
 
     }
+    public static function setSiteColors(){
+        if (!isset($_SESSION['site_color'])){
+            $_SESSION['site_items'] = getDataFromDB::getVisibleSiteDetails();
+            foreach ($_SESSION['site_items'] as $item){
+                if ($item['key']=='site_color'){
+                    $_SESSION['site_color']=$item['value'];
+                }elseif ($item['key']=='accent_color'){
+                    $_SESSION['accent_color']=$item['value'];
+                }
+            }
+        }
+    }
 }
 //get important site data at the start of a session
 function init(): void

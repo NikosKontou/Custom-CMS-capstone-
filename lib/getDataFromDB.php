@@ -4,17 +4,17 @@ class getDataFromDB
 //every single database job should be stored here and called via the class as a static function
 {
     //offset used by pagination, if nothing is set, start from first post
-    public static function getArticles($offset = 0)
+    public static function getArticles($offset=0)
     {
         try {
+
             //get every article in the db
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT * FROM articles '.
             'ORDER BY created_time DESC '.
             'LIMIT 3 OFFSET :offset');
             $select->bindParam('offset', $offset, PDO::PARAM_INT);
-            print_r($offset);
-//            exit;
+
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

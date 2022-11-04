@@ -1,5 +1,9 @@
 {% set nextPage = currentPage+1 %}
 {% set previousPage = currentPage-1 %}
+{% set imgSrc='../lib/dependencies/imgs/sgvs/pagination-button.svg' %}
 <div class="row">
-    <a href="?p={{ previousPage }}">previous</a>    <a href="?p={{ nextPage }}">next</a>
-    </div>
+    {% if previousPage > -1 %}
+    <div class="col-lg-2 col-sm-4"> <a href="?p={{ previousPage }}"><img src="{{ imgSrc }}"style="fill:{{ accentColor }}">previous</a>
+    </div>{% endif %}
+    <div class="col-lg-2 col-sm-4"><a href="?p={{ nextPage }}"><img src="{{ imgSrc }}" style="fill:{{ accentColor }}" class="rotate180">next</a></div>
+</div>
