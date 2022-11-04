@@ -11,7 +11,7 @@ class getDataFromDB
             $db = DBConnect::setConnection();
             $select = $db->prepare('SELECT * FROM articles '.
             'ORDER BY created_time DESC '.
-            'LIMIT 10 OFFSET :offset');
+            'LIMIT 3 OFFSET :offset');
             $select->bindParam('offset', $offset, PDO::PARAM_INT);
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ class getDataFromDB
                 'inner join categories c on c.id =a.category_id  '.
                 'where c.category_name = :category_name '.
                 'order by a.created_time'.
-            'LIMIT 10 OFFSET :offset');
+            'LIMIT 3 OFFSET :offset');
 //            print_r($select);exit;
             $select->bindParam('category_name', $category, PDO::PARAM_STR);
 
