@@ -18,13 +18,25 @@ if (isset($_SESSION['accessLevel'])) {
     }
 }
 
+//set color option from siteItems
+Session::setSiteColors();
+//manage paggination
+$pager ='';
+if (isset($_GET['p'])){
+    $pager=((int)htmlspecialchars($_GET['p']))*3;
+    $result = getDataFromDB::getCategoryArticles(htmlspecialchars($_GET['c']), $pager);
+}else{
+    $pager=0;
+    $result = getDataFromDB::getCategoryArticles(htmlspecialchars($_GET['c']));
+}
 require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
 //get every article from the DB
-$result = getDataFromDB::getCategoryArticles($_GET['c']);
+
 //display it in the template
 echo $twig->render('category-name.html.twig', ['categoryName' => htmlspecialchars($_GET['c'])]);
 echo $twig->render('index.html.twig', ['articles' => $result]);
+echo $twig->render('pagination.html.twig', ['accentColor'=>$_SESSION['accent_color'], 'currentPage'=>isset($_GET['p'])?(int)htmlspecialchars($_GET['p']):0]);
 
 ?>
 </div>

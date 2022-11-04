@@ -17,7 +17,7 @@ if (isset($_SESSION['accessLevel'])) {
         require_once("lib/headerFooter/adminMenu.php");
     }
 }
-//get color option from siteItems
+//set color option from siteItems
 Session::setSiteColors();
 //manage paggination
 $pager ='';
