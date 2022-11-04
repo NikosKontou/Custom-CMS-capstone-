@@ -1,9 +1,16 @@
 {% set nextPage = currentPage+1 %}
 {% set previousPage = currentPage-1 %}
 {% set imgSrc='../lib/dependencies/imgs/sgvs/pagination-button.svg' %}
+
+    {% if categoryName is defined %}
+        {% set categoryUrl = "?c=" ~ categoryName ~"&" %}
+    {% else %}
+        {% set categoryUrl="?" %}
+    {% endif %}
+
 <div class="row">
     {% if previousPage > -1 %}
-    <div class="col-lg-2 col-sm-4"> <a href="?p={{ previousPage }}"><img src="{{ imgSrc }}"style="fill:{{ accentColor }}">previous</a>
+    <div class="col-lg-2 col-sm-4"> <a href="{{ categoryUrl }}p={{ previousPage }}"><img src="{{ imgSrc }}"style="fill:{{ accentColor }}">previous</a>
     </div>{% endif %}
-    <div class="col-lg-2 col-sm-4"><a href="?p={{ nextPage }}"><img src="{{ imgSrc }}" style="fill:{{ accentColor }}" class="rotate180">next</a></div>
+    <div class="col-lg-2 col-sm-4"><a href="{{ categoryUrl }}p={{ nextPage }}"><img src="{{ imgSrc }}" style="fill:{{ accentColor }}" class="rotate180">next</a></div>
 </div>

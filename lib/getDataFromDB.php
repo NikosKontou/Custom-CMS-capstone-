@@ -30,7 +30,7 @@ class getDataFromDB
             $select = $db->prepare('SELECT a.id, a.title, a.body, a.created_time, a.header_image, c.category_name  from articles a '.
                 'inner join categories c on c.id =a.category_id  '.
                 'where c.category_name = :category_name '.
-                'order by a.created_time'.
+                'order by a.created_time '.
             'LIMIT 3 OFFSET :offset');
 //            print_r($select);exit;
             $select->bindParam('category_name', $category, PDO::PARAM_STR);
