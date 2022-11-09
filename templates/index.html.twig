@@ -1,7 +1,6 @@
 <div class="col-12">
     {% for article in articles %}
         <div class="row">
-
             {#    display the image #}
             <img src="../assets/images/{{ article['header_image'] }}" class="header-image"/>
             {#    send the GET to article.php so it can be retrieved by the database #}
@@ -9,7 +8,16 @@
                     {{ article['title'] }} </a>
             </h2>
             <span class="mb-5">
-                {{ article['body']|length >100? article['body']|slice(0,100) ~'<a href="article?id={{ article["id"] }}">... Read more</a>':article['body']  }}
+                {% if article['body']|length >200 %}
+                    {{ article['body']|slice(0,200)}}
+                <span class="readMore">
+                    <a href="article?id={{ article['id'] }}">... read more</a>
+        </span>
+                {% else %}
+                    {{ article['body'] }}
+                    <a href="article?id={{ article['id'] }}">... read more</a>
+                {% endif %}
+                {#                {{ article['body']|length >200? article['body']|truncate(150,true,"readMore"|raw) : article['body']  }}#}
             </span>
         </div>
 
