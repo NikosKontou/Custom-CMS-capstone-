@@ -9,7 +9,7 @@
                     {{ article['title'] }} </a>
             </h2>
             <span class="mb-5">
-                {{ article['body'] }}
+                {{ article['body']|length >100? article['body']|slice(0,100) ~'<a href="article?id={{ article["id"] }}">... Read more</a>':article['body']  }}
             </span>
         </div>
 
