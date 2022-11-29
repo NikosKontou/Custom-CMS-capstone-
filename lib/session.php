@@ -3,10 +3,12 @@
 class Session{
 
 
-    public static function destroy(){
+    public static function destroy(): void
+    {
         session_destroy();
     }
-    public static function set($key, $value){
+    public static function set($key, $value): void
+    {
         $_SESSION[$key] = $value;
     }
     public static function get($key){
@@ -22,7 +24,8 @@ class Session{
         return date('Y-m-d H:i:s',time());
 
     }
-    public static function setSiteColors(){
+    public static function setSiteColors(): void
+    {
         if (!isset($_SESSION['site_color'])){
             $_SESSION['site_items'] = getDataFromDB::getVisibleSiteDetails();
             foreach ($_SESSION['site_items'] as $item){

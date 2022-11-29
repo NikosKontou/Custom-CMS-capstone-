@@ -20,7 +20,7 @@ class deleteDataFromDB
         return"<br>" . $e->getMessage();
         }
     }
-    public static function deleteCategory($id)
+    public static function deleteCategory($id): bool|int
     {
         try {
             $db = DBConnect::setConnection();

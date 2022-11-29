@@ -4,7 +4,8 @@ DBConnect:: setConnection();
 
 class DBConnect{
     public static $conn;
-    public static function setConnection(){
+    public static function setConnection(): PDO
+    {
 //        get the host and db name from the configuration file
         $host = DB_HOST;
         $dbname = DB_NAME;
