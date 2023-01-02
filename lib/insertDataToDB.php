@@ -38,7 +38,7 @@ class insertDataToDB
             $select->execute();
             return $select->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
-            echo "<br>" . $e->getMessage();
+            return "<br>" . $e->getMessage();
         }
 
     }

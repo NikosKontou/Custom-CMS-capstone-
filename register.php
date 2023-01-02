@@ -36,7 +36,7 @@ require_once("lib/headerFooter/header.php");?>
 
     <?php
     //call the register template
-    echo $twig->render('register.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'msg' => (isset($msg)) ? $msg : null]);
+    echo $twig->render('register.html.twig', ['phpSelf'=>htmlspecialchars($_SERVER['PHP_SELF']), 'msg' => (isset($result)) ? $result : null]);
 
     ?>
 
