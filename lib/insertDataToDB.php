@@ -38,7 +38,8 @@ class insertDataToDB
             $select->execute();
             return $select->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
-            return "<br>" . $e->getMessage();
+            return "error, user exists";
+//            echo "<br>" . $e->getMessage();
         }
 
     }
