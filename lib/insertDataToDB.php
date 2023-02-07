@@ -32,16 +32,16 @@ class insertDataToDB
         try {
             $encrypted_password = password_hash($password, PASSWORD_BCRYPT);
             $db = DBConnect::setConnection();
-            $select = $db->prepare('insert into users (user_name, user_password) values (:username, :password)');
-            $select->bindParam('username', $username, PDO::PARAM_STR);
-            $select->bindParam('password', $encrypted_password);
-            $select->execute();
-            return $select->fetchAll(PDO::FETCH_OBJ);
+            $insert = $db->prepare('insert into users (user_name, user_password) values (:username, :password)');
+            $insert->bindParam('username', $username, PDO::PARAM_STR);
+            $insert->bindParam('password', $encrypted_password);
+            $insert->execute();
+            return "successfully register with username ".$username;
+//            return $insert->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             return "error, user exists";
 //            echo "<br>" . $e->getMessage();
         }
-
     }
 
     public static function createCategory($name, $cat_visibility, $cat_order)

@@ -27,7 +27,8 @@ class getDataFromDB
         try {
             //get every article in the db
             $db = DBConnect::setConnection();
-            $select = $db->prepare('SELECT a.id, a.title, a.body, a.created_time, a.header_image, c.category_name  from articles a '.
+            $select = $db->prepare('SELECT a.id, a.title, a.body, '.
+                    'a.created_time, a.header_image, c.category_name  from articles a '.
                 'inner join categories c on c.id =a.category_id  '.
                 'where c.category_name = :category_name '.
                 'order by a.created_time '.
@@ -39,7 +40,7 @@ class getDataFromDB
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo "<br>" . $e->getMessage();
+            echo "an error occurred, contact website administrator";
         }
     }
 
