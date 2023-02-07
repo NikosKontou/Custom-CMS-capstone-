@@ -41,7 +41,6 @@
 .header-image {
     height: 450px;
     object-fit: cover;
-
 }
 .top-promoted-image{
     height: 400px;
@@ -54,11 +53,27 @@
     object-fit: cover;
 }
 .promoted-header{
-    padding: 2rem 0rem 0rem 0rem;
+    padding: 0rem 0rem 0rem 0rem;
 }
 .main-promoted  a{
     color: #000505;
 }
 .rotate180{
     transform: rotate(180deg);
+}
+a:link, a:active, a:visited, a:hover{
+text-decoration: none;
+}
+.recommended-reading {
+    height:4px;border-width:0;
+    margin: auto;
+}
+.news-reading {
+    height:2px;border-width:0;
+    margin: auto;
+}
+.recomended-box, article-header{
+    padding: 1rem 0rem 0.5rem 0rem;
+    padding-left: 12px;
+    padding-right: 12px;
 }
