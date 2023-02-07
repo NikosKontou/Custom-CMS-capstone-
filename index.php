@@ -19,6 +19,7 @@ if (isset($_SESSION['accessLevel'])) {
 }
 //set color option from siteItems
 Session::setSiteColors();
+
 //manage paggination
 $pager ='';
 if (isset($_GET['p'])){
@@ -35,13 +36,14 @@ $promotedRes = getDataFromDB::getPromotedArticles();
 
 require_once("lib/headerFooter/header.php");
 echo("<div class='container'>");
-echo $twig->render('promoted.html.twig', ['promoted' => $promotedRes]);
+echo $twig->render('promoted.html.twig', ['promoted' => $promotedRes, 'site_color'=>$_SESSION['site_color']]);
 //get every article from the DB
 
 //display it in the template
-echo $twig->render('index.html.twig', ['articles' => $result]);
+echo $twig->render('index.html.twig', ['articles' => $result, 'site_color'=>$_SESSION['site_color']]);
 //ternary operator: if get is set then convert it to safe string and then int, else pass 0
-echo $twig->render('pagination.html.twig', ['accentColor'=>$_SESSION['accent_color'], 'currentPage'=>isset($_GET['p'])?(int)htmlspecialchars($_GET['p']):0]);
+
+echo $twig->render('pagination.html.twig', ['site_color'=>$_SESSION['site_color'], 'currentPage'=>isset($_GET['p'])?(int)htmlspecialchars($_GET['p']):0]);
 
 ?>
 </div>
