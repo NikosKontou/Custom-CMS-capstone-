@@ -1,22 +1,28 @@
-<a href="create-category.php"><button>Insert</button></a>
-<div class="row">
-    <div class="col">Edit</div>
-    <div class="col">Ordering</div>
-    <div class="col">Visibility</div>
-
-    <div class="col"></div>
-</div>
-{% for category in categories %}
-
-    {#    send the GET to category.php so it can be retrieved by the database and display the correct category #}
-    <div class="row">
-
-
-        <div class="col"><a href="../admin/category-edit.php?id={{ category['id'] }}">{{ category['category_name'] }}</a> </div>
-        <div class="col info">{{ category['ordering'] }}</div>
-        <div class="col info">{{ category['visibility']==1?"visible":"hidden" }}</div>
-        <div class="col deleteItem"><a href="../admin/categories.php?deleteId={{ category['id'] }}"><button>delete category</button></a> </div>
+<div class="container pt-3"><a href="create-category.php">
+        <button>Create a new category</button>
+    </a>
+    <div class="row pt-3">
+        <div class="col">Edit</div>
+        <div class="col">Ordering</div>
+        <div class="col">Visibility</div>
+        <div class="col"></div>
     </div>
+    {% set i=0 %}
+    {% for category in categories %}
+        {% set i=i+1 %}
+        {#    send the GET to category.php so it can be retrieved by the database and display the correct category #}
+        <div class="row pt-3{% if i % 2 ==0 %} dark-row{% endif %}">
 
-{% endfor %}
 
+            <div class="col"><a
+                        href="../admin/category-edit.php?id={{ category['id'] }}">{{ category['category_name'] }}</a>
+            </div>
+            <div class="col info">{{ category['ordering'] }}</div>
+            <div class="col info">{{ category['visibility']==1?"visible":"hidden" }}</div>
+            <div class="col deleteItem"><a href="../admin/categories.php?deleteId={{ category['id'] }}">
+                    <button>delete category</button>
+                </a></div>
+        </div>
+    {% endfor %}
+
+</div>

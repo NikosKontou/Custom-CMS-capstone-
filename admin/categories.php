@@ -30,7 +30,8 @@ require_once("../lib/headerFooter/adminMenu.php");
 if(isset($_GET['deleteId'])){
     $res = deleteDataFromDB::deleteCategory(dataValidation::rmvSpclChars($_GET['deleteId']));
     if ($res!=false){
-        echo('deletion was a success');
+        header("Refresh:0");
+        echo("<script>window.alert('Category successfully deleted')</script>");
     }
 }
 ?>

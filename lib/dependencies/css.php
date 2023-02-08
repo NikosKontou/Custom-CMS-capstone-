@@ -3,12 +3,12 @@ echo('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstra
 
 echo('<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">');
 
-if(is_file("lib/dependencies/css/custom.css")){
+
     //get the hash of the file and put it in the "?v=" so that every change is detected and invalidate browser cache
-    $versionHash = md5_file("lib/dependencies/css/custom.css");
+    $versionHash = md5_file("https://u2123125.eu/lib/dependencies/css/custom.css");
 //add the user.css last to overwrite anything else
-    echo('<link href="lib/dependencies/css/custom.css?v='.$versionHash.'" rel="stylesheet">');
-}
+    echo('<link href="https://u2123125.eu/lib/dependencies/css/custom.css?v='.$versionHash.'" rel="stylesheet">');
+
 
 
 

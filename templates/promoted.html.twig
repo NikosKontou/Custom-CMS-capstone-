@@ -1,6 +1,6 @@
-
 <div class="main-promoted col-12 pt-3 pb-5">
-    <div class="recomended-box row"><div class="promoted-header col-3"><h3><strong>Recommended reading</strong></h3></div>
+    <div class="recomended-box row">
+        <div class="promoted-header col-3"><h3><strong>Recommended reading</strong></h3></div>
         <hr class="recommended-reading col" style="background-color:{{ site_color }}">
     </div>
     <div class="row">
@@ -17,14 +17,14 @@
             <div class="col-lg-7">
                 <div class="row">
                     <div class="col-6">
-                        <img src="../assets/images/{{ promoted[1]['header_image'] }}" class="small-promoted-image"/>
+                        <img src="../assets/images/{{ promoted[1]['header_image'] }}" class="small-promoted-image" id="first-image"/>
                         <h4><a href="article.php?id={{ promoted[1]['id'] }}">
                                 {{ promoted[1]['title'] }} </a>
                         </h4>
                     </div>
                     {% if promoted[2] is defined %}
                     <div class="col-6">
-                        <img src="../assets/images/{{ promoted[2]['header_image'] }}" class="small-promoted-image"/>
+                        <img src="../assets/images/{{ promoted[2]['header_image'] }}" class="small-promoted-image" id="second-image"/>
                         <h4><a href="article.php?id={{ promoted[2]['id'] }}">
                                 {{ promoted[2]['title'] }} </a>
                         </h4>
@@ -33,7 +33,7 @@
                 {% if promoted[3] is defined %}
                     <div class="row">
                         <div class="col-6">
-                            <img src="../assets/images/{{ promoted[3]['header_image'] }}" class="small-promoted-image"/>
+                            <img src="../assets/images/{{ promoted[3]['header_image'] }}" class="small-promoted-image" id="third-image"/>
                             <h4><a href="article.php?id={{ promoted[3]['id'] }}">
                                     {{ promoted[3]['title'] }} </a>
                             </h4>
@@ -41,7 +41,7 @@
                         {% if promoted[4] is defined %}
                             <div class="col-6">
                                 <img src="../assets/images/{{ promoted[4]['header_image'] }}"
-                                     class="small-promoted-image"/>
+                                     class="small-promoted-image" id="fourth-image"/>
                                 <h4><a href="article.php?id={{ promoted[4]['id'] }}">
                                         {{ promoted[4]['title'] }} </a>
                                 </h4>
@@ -55,3 +55,23 @@
     </div>
 
 </div>
+
+
+<script>
+    document.querySelector(".top-promoted-image").addEventListener("click", ()=>{
+        window.location="article.php?id={{ promoted[0]['id'] }}";
+    })
+    document.querySelector("#first-image").addEventListener("click", ()=>{
+        window.location="article.php?id={{ promoted[1]['id'] }}";
+    })
+    document.querySelector("#second-image").addEventListener("click", ()=>{
+        window.location="article.php?id={{ promoted[2]['id'] }}";
+    })
+    document.querySelector("#third-image").addEventListener("click", ()=>{
+        window.location="article.php?id={{ promoted[3]['id'] }}";
+    })
+    document.querySelector("#fourth-image").addEventListener("click", ()=>{
+        window.location="article.php?id={{ promoted[4]['id'] }}";
+    })
+
+</script>

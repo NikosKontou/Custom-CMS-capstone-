@@ -1,4 +1,4 @@
-{#in order to access the vairables outside the loop, they have to be initialiseb beforehand#}
+{# in order to access the vairables outside the loop, they have to be initialiseb beforehand #}
 {% set facebook='' %}
 {% set instagram='' %}
 {% set twitter='' %}
@@ -30,43 +30,39 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-xs-12 about-company">
-{#                <h2>Heading</h2>#}
+                {#                <h2>Heading</h2> #}
                 {% if siteInfo is defined %}
-                <p class="pr-5 text-white-50">{{ siteInfo }}</p>
+                    <p class="pr-5 text-white-50">{{ siteInfo }}</p>
                 {% endif %}
             </div>
             <div class="col-lg-3 col-xs-12 links">
                 <h4 class="mt-lg-0 mt-sm-3">Find us at</h4>
-                <ul class="m-0 p-0">
-
                     {% if facebook is defined %}
-                    <li>- <a href="{{ facebook }}">Facebook</a></li>
+                        <p><i class="ri-facebook-box-line"></i><a href="{{ facebook }}" class="link-no-blue"> Facebook</a></p>
                     {% endif %}
                     {% if instagram is defined %}
-                        <li>- <a href="{{ instagram }}">Instagram</a></li>
+                        <p><i class="ri-instagram-line"></i><a href="{{ instagram }}" class="link-no-blue"> Instagram</a></p>
                     {% endif %}
                     {% if item.key =='Twitter' %}
-                        <li>- <a href="{{ twitter }}">Twitter</a></li>
+                        <p><i class="ri-twitter-line"></i><a href="{{ twitter }}" class="link-no-blue"> Twitter</a></p>
                     {% endif %}
 
-                </ul>
             </div>
             <div class="col-lg-4 col-xs-12 location">
                 {% if address is defined %}
                 <h4 class="mt-lg-0 mt-sm-4">Location</h4>
-                <p>{{ address }}</p>
+                <p><i class="ri-map-pin-line"></i> {{ address }}</p>
                 {% endif %}
                 {% if phone is defined %}
-                <p class="mb-0"><i class="fa fa-phone mr-3"></i>{{ phone }}</p>
+                    <p> <i class="ri-phone-line"></i> {{ phone }}</p>
                 {% endif %}
-                {% if email is defined %}
-                <p><i class="fa fa-envelope-o mr-3"></i>{{ email }}</p>
+                {% if email is defined %}<p><i class="ri-mail-line"></i> {{ email }}</p>
                 {% endif %}
             </div>
         </div>
         <div class="row mt-5">
             <div class="col copyright">
-{#                automatically update the copyright date#}
+                {#                automatically update the copyright date #}
                 <p class=""><small class="text-white-50">© {{ "now"|date("Y") }}. All Rights Reserved.</small></p>
             </div>
         </div>

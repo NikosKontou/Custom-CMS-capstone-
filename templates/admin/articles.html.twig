@@ -1,24 +1,32 @@
-<a href="create-article.php"><button>Insert</button></a>
-<div class="row">
+<div class="container pt-3"><a href="create-article.php">
+        <button>Create a new article</button>
+    </a>
+    <div class="row pt-3">
         <div class="col-2">View</div>
         <div class="col-2">Created by</div>
         <div class="col-2">Created at</div>
         <div class="col-2">Last update</div>
         <div class="col-2">Edit</div>
         <div class="col-2"></div>
+    </div>
+    {% set i=0 %}
+    {% for article in articles %}
+        {% set i=i+1 %}
+        {#        style each second row #}
+        <div class="row pt-3{% if i % 2 ==0 %} dark-row{% endif %}">
+            {#    send the GET to article.php so it can be retrieved by the database and display the correct article #}
+            <div class="col"><a href="../article.php?id={{ article['id'] }}">
+                    {{ article['title'] }} </a></div>
+            <div class="col">{{ article['user_name'] }}</div>
+            <div class="col">{{ article['created_time'] }}</div>
+            <div class="col">{{ article['last_edit'] }}</div>
+            <div class="col"><a href="../admin/article-edit.php?id={{ article['id'] }}">
+                    <button>Edit</button>
+                </a></div>
+            <div class="col deleteItem"><a href="../admin/articles.php?deleteId={{ article['id'] }}">
+                    <button>delete item</button>
+                </a></div>
+        </div>
+
+    {% endfor %}
 </div>
-{% for article in articles %}
-
-{#    send the GET to article.php so it can be retrieved by the database and display the correct article #}
-<div class="row">
-        <div class="col">view <a href="../article.php?id={{ article['id'] }}">
-         {{ article['title'] }} </a> </div>
-        <div class="col">{{ article['user_name'] }}</div>
-        <div class="col">{{ article['created_time'] }}</div>
-        <div class="col">{{ article['last_edit'] }}</div>
-        <div class="col"><a href="../admin/article-edit.php?id={{ article['id'] }}">{{ article['title'] }}</a> </div>
-        <div class="col deleteItem"><a href="../admin/articles.php?deleteId={{ article['id'] }}"><button>delete item</button></a> </div>
-</div>
-
-{% endfor %}
-

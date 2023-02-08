@@ -1,28 +1,45 @@
+{% set i =0 %}
 <div class="col-12">
-    <div class="recomended-box row"><div class="promoted-header col-2"><h3>Latest news</h3></div>
+    <div class="recomended-box row">
+        <div class="promoted-header col-2"><h3>Latest news</h3></div>
         <hr class="news-reading col" style="background-color:{{ site_color }}">
     </div>
     {% for article in articles %}
         <div class="row">
             {#    display the image #}
+
             <img src="../assets/images/{{ article['header_image'] }}" class="header-image"/>
             {#    send the GET to article.php so it can be retrieved by the database #}
-            <h2><a href="article?id={{ article['id'] }}">
+            <h2>
+                <a href="article?id={{ article['id'] }}">
                     {{ article['title'] }} </a>
             </h2>
             <span class="mb-5">
                 {% if article['body']|length >200 %}
-                    {{ article['body']|slice(0,200)}}
-                <span class="readMore">
+                    {{ article['body']|slice(0,200) }}
+                    <span class="readMore">
                     <a href="article?id={{ article['id'] }}">... read more</a>
         </span>
                 {% else %}
                     {{ article['body'] }}
                     <a href="article?id={{ article['id'] }}">... read more</a>
                 {% endif %}
-                {#                {{ article['body']|length >200? article['body']|truncate(150,true,"readMore"|raw) : article['body']  }}#}
+                {#                {{ article['body']|length >200? article['body']|truncate(150,true,"readMore"|raw) : article['body']  }} #}
             </span>
         </div>
 
     {% endfor %}
 </div>
+
+<script>
+    {% set i = 0 %}
+    document.querySelectorAll(".header-image").forEach(() => {
+        addEventListener('click', () => {
+            window.location = "article?id={{ articles[i]['id'] }}";
+        });
+
+        {% set i=i+1 %}
+        console.log("{{ i }}");
+    } )
+
+</script>

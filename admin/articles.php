@@ -29,7 +29,8 @@ echo $twig->render('admin/articles.html.twig',['articles'=>$result]);
 if(isset($_GET['deleteId'])){
     $res = deleteDataFromDB::deleteArticle($_GET['deleteId']);
     if ($res!=false){
-        echo('deletion was a success');
+        header("Refresh:0");
+        echo("<script>window.alert('Article successfully deleted')</script>");
     }
 }
 ?>

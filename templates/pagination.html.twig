@@ -12,12 +12,12 @@
     {% if previousPage > -1 %}
         <div class="col-lg-2 col-sm-4"><a href="{{ categoryUrl }}p={{ previousPage }}">
                 <img src="{{ imgSrc }}"
-                     style="fill:{{ accentColor }}">previous</a>
+                     style="fill:{{ accentColor }}"> Newer</a>
         </div>
     {% endif %}
     <div class="col-lg-2 col-sm-4"><a href="{{ categoryUrl }}p={{ nextPage }}">
             <img src="{{ imgSrc }}"
                  style="fill:{{ accentColor }}"
-                 class="rotate180">next</a>
+                 class="rotate180"> Older</a>
     </div>
 </div>

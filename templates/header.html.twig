@@ -1,4 +1,4 @@
-{#in order to access the vairables outside the loop, they have to be initialiseb beforehand#}
+{# in order to access the vairables outside the loop, they have to be initialiseb beforehand #}
 {% set slogan='' %}
 {% set name='' %}
 {% set siteColor='' %}
@@ -25,10 +25,12 @@
             {{ slogan }}
         </div>
     </div>
-{#bootstrap allready implements the "!important" css option, so in order to overwrite it, it must be implemented again#}
-    <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-primary" style="background: {{ siteColor }}!important">
+    {# bootstrap allready implements the "!important" css option, so in order to overwrite it, it must be implemented again #}
+    <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-primary"
+         style="background: {{ siteColor }}!important">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="/assets/images/{{ logoUri}}" alt="{{ name }}" style="height: 60px;"/> </a>
+            <a class="navbar-brand" href="/"><img src="/assets/images/{{ logoUri }}" alt="{{ name }}"
+                                                  style="height: 60px;"/> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,25 +38,27 @@
 
                 <ul class="navbar-nav ms-auto">
                     {% set break = false %}
-                    {#limit the menu to 10 items#}
-                    {% for item in menuItems|slice(0, 9)%}
-                    <li class="nav-item">
-                        <a class="nav-link" href="category?c={{ item['category_name'] }}"> {{ item['category_name']}} </a>
-                    </li>
+                    {# limit the menu to 10 items #}
+                    {% for item in menuItems|slice(0, 9) %}
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="category?c={{ item['category_name'] }}"> {{ item['category_name'] }} </a>
+                        </li>
                     {% endfor %}
-{#                    if the username is set, the user is loged in and can see relative information#}
+                    {#                    if the username is set, the user is loged in and can see relative information #}
                     {% if username != null %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Hi {{ username}}  </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"> My profile</a></li>
-                            <form role="form" action="{{ phpSelf }}" method="post">
-                            <button name="logOut" type="submit" class="btn btn-primary">Log out</button>
-                            <li><a class="dropdown-item" href="#"> id is {{ userID}} </a></li>
-                            </form>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Hi {{ username }}  </a>
+                            <ul class="dropdown-menu">
+                                {#                            <li><a class="dropdown-item" href="#"> My profile</a></li> #}
+                                <form role="form" action="{{ phpSelf }}" method="post">
+                                    <button name="logOut" type="submit" class="btn btn-primary">Log out</button>
+                                    {#                            <li><a class="dropdown-item" href="#"> id is {{ userID}} </a></li> #}
+                                </form>
                             </ul>
-                    </li>
-{#                        else display the log in prompt#}
+                        </li>
+                        {#                        else display the log in prompt #}
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="/login.php"> Log in </a></li>
                     {% endif %}
