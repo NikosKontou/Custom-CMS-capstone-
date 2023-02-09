@@ -40,7 +40,7 @@ echo $twig->render('promoted.html.twig', ['promoted' => $promotedRes, 'site_colo
 //get every article from the DB
 
 //display it in the template
-echo $twig->render('index.html.twig', ['articles' => $result, 'site_color'=>$_SESSION['site_color']]);
+echo $twig->render('index.html.twig', ['articles' => $result, 'site_color'=>$_SESSION['accent_color']]);
 //ternary operator: if get is set then convert it to safe string and then int, else pass 0
 
 echo $twig->render('pagination.html.twig', ['site_color'=>$_SESSION['site_color'], 'currentPage'=>isset($_GET['p'])?(int)htmlspecialchars($_GET['p']):0]);
