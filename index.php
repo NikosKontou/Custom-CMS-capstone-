@@ -23,7 +23,7 @@ Session::setSiteColors();
 //manage paggination
 $pager ='';
 if (isset($_GET['p'])){
-    $pager=((int)htmlspecialchars($_GET['p']))*3;
+    $pager=((int)htmlspecialchars($_GET['p']))*10;
     $result = getDataFromDB::getArticles($pager);
 }else{
     $pager=0;

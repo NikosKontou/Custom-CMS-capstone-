@@ -32,14 +32,35 @@
 </div>
 
 <script>
-    {% set i = 0 %}
-    document.querySelectorAll(".header-image").forEach(() => {
-        addEventListener('click', () => {
-            window.location = "article?id={{ articles[i]['id'] }}";
-        });
-
-        {% set i=i+1 %}
-        console.log("{{ i }}");
-    } )
+    document.querySelectorAll(".header-image")[0].addEventListener('click', () => {
+        window.location = "article?id={{ articles[0]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[1].addEventListener('click', () => {
+        window.location = "article?id={{ articles[1]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[2].addEventListener('click', () => {
+        window.location = "article?id={{ articles[2]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[3].addEventListener('click', () => {
+        window.location = "article?id={{ articles[3]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[4].addEventListener('click', () => {
+        window.location = "article?id={{ articles[4]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[5].addEventListener('click', () => {
+        window.location = "article?id={{ articles[5]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[6].addEventListener('click', () => {
+        window.location = "article?id={{ articles[6]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[7].addEventListener('click', () => {
+        window.location = "article?id={{ articles[7]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[8].addEventListener('click', () => {
+        window.location = "article?id={{ articles[8]['id'] }}";
+    });
+    document.querySelectorAll(".header-image")[9].addEventListener('click', () => {
+        window.location = "article?id={{ articles[9]['id'] }}";
+    });
 
 </script>
