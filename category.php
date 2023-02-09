@@ -26,7 +26,7 @@ Session::setSiteColors();
 //manage paggination
 $pager ='';
 if (isset($_GET['p'])){
-    $pager=((int)htmlspecialchars($_GET['p']))*3;
+    $pager=((int)htmlspecialchars($_GET['p']))*10;
     $result = getDataFromDB::getCategoryArticles($categoryName, $pager);
 }else{
     $pager=0;
@@ -37,7 +37,7 @@ echo("<div class='container'>");
 //get every article from the DB
 
 //display it in the template
-echo $twig->render('category-name.html.twig', ['categoryName' => htmlspecialchars($_GET['c'])]);
+echo $twig->render('category-name.html.twig', ['categoryName' => htmlspecialchars($_GET['c']), 'accent_color'=>$_SESSION['accent_color']]);
 echo $twig->render('index.html.twig', ['articles' => $result]);
 echo $twig->render('pagination.html.twig', ['categoryName'=>$categoryName, 'accentColor'=>$_SESSION['accent_color'], 'currentPage'=>isset($_GET['p'])?(int)htmlspecialchars($_GET['p']):0]);
 
