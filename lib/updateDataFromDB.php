@@ -9,15 +9,15 @@ class updateDataDromDb
         try {
             //set an article from edit form
             $db = DBConnect::setConnection();
-            $update = $db->prepare("update articles set title = :title,body= :body, header_image= :image, category_id = :category_id, promoted = :promoted where id = :id");
-
+            $update = $db->prepare("update articles set last_edit= :lastEdit, title = :title,body= :body, header_image= :image, category_id = :category_id, promoted = :promoted where id = :id");
+            $now= date("Y-m-d H:i:s");
             $update->bindParam('title', $title, PDO::PARAM_STR);
             $update->bindParam('body', $body, PDO::PARAM_STR);
             $update->bindParam('image', $image, PDO::PARAM_STR);
             $update->bindParam('id', $id, PDO::PARAM_INT);
             $update->bindParam('promoted', $checkBox, PDO::PARAM_INT);
             $update->bindParam('category_id', $CID, PDO::PARAM_STR);
-//        var_dump($update);exit();
+            $update->bindParam('lastEdit',$now , PDO::PARAM_STR);
             $update->execute();
 
             // echo a message to say the UPDATE succeeded
@@ -32,14 +32,14 @@ class updateDataDromDb
         try {
             //set an article
             $db = DBConnect::setConnection();
-            $update = $db->prepare("update articles set title = :title, body= :body, category_id = :category_id, promoted = :promoted  where id = :id");
-
+            $update = $db->prepare("update articles set last_edit= :lastEdit, title = :title, body= :body, category_id = :category_id, promoted = :promoted  where id = :id");
+            $now= date("Y-m-d H:i:s");
             $update->bindParam('title', $title, PDO::PARAM_STR);
             $update->bindParam('body', $body, PDO::PARAM_STR);
             $update->bindParam('id', $id, PDO::PARAM_INT);
             $update->bindParam('promoted', $checkBox, PDO::PARAM_INT);
             $update->bindParam('category_id', $CID, PDO::PARAM_STR);
-//        var_dump($update);exit();
+            $update->bindParam('lastEdit',$now , PDO::PARAM_STR);
             $update->execute();
 
             // echo a message to say the UPDATE succeeded
