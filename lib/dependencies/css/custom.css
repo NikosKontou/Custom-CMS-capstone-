@@ -110,3 +110,7 @@ cursor: pointer;
     font-style: italic;
     text-decoration: underline!important;
 }
+
+.admin-bar{
+    background-color: #333333!important;
+}
