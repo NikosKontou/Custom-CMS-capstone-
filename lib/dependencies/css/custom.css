@@ -86,3 +86,6 @@ text-decoration: none;
 .slogan{
     color: #aaaaaa;
 }
+#main-content a, #pager a{
+    color: #222222;
+}
