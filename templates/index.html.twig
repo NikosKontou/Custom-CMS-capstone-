@@ -8,22 +8,18 @@
         <div class="row">
             {#    display the image #}
 
-            <img src="../assets/images/{{ article['header_image'] }}" class="header-image pointer"/>
+            <img src="../assets/images/{{ article['header_image'] }}" class="header-image pointer pb-1"/>
             {#    send the GET to article.php so it can be retrieved by the database #}
-            <h2>
+            <h2 class="mb-1">
                 <a href="article?id={{ article['id'] }}">
                     {{ article['title'] }} </a>
             </h2>
-            <span class="mb-5">
-                {% if article['body']|length >200 %}
-                    {{ article['body']|slice(0,200) }}
+            <span class="mb-4">
+                {{ article['body']|split('.')[0] }}.
                     <span class="readMore">
-                    <a href="article?id={{ article['id'] }}">... read more</a>
+                    <a href="article?id={{ article['id'] }}">Read more</a>
         </span>
-                {% else %}
-                    {{ article['body'] }}
-                    <a href="article?id={{ article['id'] }}">... read more</a>
-                {% endif %}
+
                 {#                {{ article['body']|length >200? article['body']|truncate(150,true,"readMore"|raw) : article['body']  }} #}
             </span>
         </div>

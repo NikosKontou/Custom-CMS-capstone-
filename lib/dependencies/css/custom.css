@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+p, span {
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
+}
+h2, h3{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+.promoted-header h2, .promoted-header h3{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
 .footer {
     background: #152f4f;
     color: white;
@@ -64,14 +80,11 @@
 a:link, a:active, a:visited, a:hover{
 text-decoration: none;
 }
-.recommended-reading {
+.recommended-reading, .news-reading {
     height:4px;border-width:0;
     margin: auto;
 }
-.news-reading {
-    height:2px;border-width:0;
-    margin: auto;
-}
+
 .recomended-box, article-header{
     padding: 1rem 0rem 0.5rem 0rem;
     padding-left: 12px;
@@ -91,4 +104,9 @@ text-decoration: none;
 }
 .pointer {
 cursor: pointer;
+}
+
+.readMore {
+    font-style: italic;
+    text-decoration: underline!important;
 }
