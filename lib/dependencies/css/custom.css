@@ -89,3 +89,6 @@ text-decoration: none;
 #main-content a, #pager a{
     color: #222222;
 }
+.pointer {
+cursor: pointer;
+}
