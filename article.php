@@ -20,7 +20,7 @@ if(isset($_SESSION['accessLevel'])){
 //call the header template
 //if the session variables are not set, pass null
 require_once("lib/headerFooter/header.php");
-echo("<div class='container'>");
+echo("<div class='container main'>");
 //find the requested article
 $result = getDataFromDB::getSingleArticle($_GET['id']);
 //pass the article obect to the template

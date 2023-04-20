@@ -35,7 +35,7 @@ $promotedRes = getDataFromDB::getPromotedArticles();
 //if the session variables are not set, pass null with the ternary operator
 
 require_once("lib/headerFooter/header.php");
-echo("<div class='container'>");
+echo("<div class='container main'>");
 echo $twig->render('promoted.html.twig', ['promoted' => $promotedRes, 'site_color'=>$_SESSION['site_color']]);
 //get every article from the DB
 

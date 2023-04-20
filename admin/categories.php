@@ -14,7 +14,7 @@
 <?php
 require_once("../lib/headerFooter/adminMenu.php");
 ?>
-<div class="container">
+<div class="container main">
     <?php
     //get every category from the DB
     $result = getDataFromDB::getCategories();

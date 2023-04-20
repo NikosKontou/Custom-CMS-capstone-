@@ -15,7 +15,7 @@
 <?php
 require_once("../lib/headerFooter/adminMenu.php");
 ?>
-<div class="container">
+<div class="container main">
     <?php
 
     $db = DBConnect::setConnection();
