@@ -33,7 +33,7 @@ if (isset($_GET['p'])){
     $result = getDataFromDB::getCategoryArticles($categoryName);
 }
 require_once("lib/headerFooter/header.php");
-echo("<div class='container main'>");
+echo("<div class='container container-main'>");
 //get every article from the DB
 
 //display it in the template

@@ -14,7 +14,8 @@
 <?php
 require_once("../lib/headerFooter/adminMenu.php");
 ?>
-<div class="container main">
+<div class="container container-main">
+
 <?php
 //get every article from the DB
 $result = getDataFromDB::getArticlesForEdit();

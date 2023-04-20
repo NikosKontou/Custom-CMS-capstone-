@@ -11,7 +11,7 @@
 
 <body>
 
-<div class = "container main form-signin">
+<div class = "container container-main form-signin">
 
     <?php
     $db= DBConnect::setConnection();
