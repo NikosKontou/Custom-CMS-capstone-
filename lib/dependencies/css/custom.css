@@ -114,3 +114,6 @@ cursor: pointer;
 .admin-bar{
     background-color: #333333!important;
 }
+.container{
+    padding-top: 3rem;
+}

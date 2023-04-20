@@ -29,7 +29,7 @@ create table users
 (
     id            int auto_increment
         primary key,
-    user_name     varchar(255)  not null,
+    user_name     varchar(30)  not null,
     user_password varchar(255)  not null,
     access_level  int default 0 not null,
     constraint user_name
@@ -53,3 +53,20 @@ create table articles
     constraint articles_fk1
         foreign key (created_by) references users (id)
 );
+
+INSERT INTO site_properties (`key`,value,visibility) VALUES
+	 ('Facebook',null,1),
+	 ('Instagram',null,1),
+	 ('email',null,1),
+	 ('site_name',null,1),
+	 ('site_color',null,1),
+	 ('site_logo',null,1),
+	 ('site_slogan',null,1),
+	 ('address',null,1),
+	 ('Twitter',null,1),
+	 ('phone',null,1);
+
+INSERT INTO site_properties (`key`,value,visibility) VALUES
+	 ('site_info',null,1),
+	 ('accent_color',null,1);
+
