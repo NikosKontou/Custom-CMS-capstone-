@@ -74,3 +74,4 @@ fabric.properties
 !.gitkeep
 config.php
 /assets/*
+.idea
