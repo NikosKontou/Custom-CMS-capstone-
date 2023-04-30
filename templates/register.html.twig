@@ -1,6 +1,6 @@
 <!--html form with post request to the page register.php-->
 {#if javascript form validation fails, the user is presented with the appropriate message#}
-<form role = "form" action = "{{ phpSelf }}" method = "post" onsubmit="return validatePassword()">
+<form role = "form" action = "{{ phpSelf }}" method = "post" onsubmit="return validatePassword()" class="user-form">
     <h4 class = "form-signin-heading">
         {% if msg is not empty %}
         <div class="error">{{ msg }}</div>
@@ -8,7 +8,7 @@
     <div class="form-group">
         <label for="username">username</label>
         <input type="username" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Enter username">
-        <small id="username help" class="form-text text-muted">Log in to access more admin options.</small>
+        <small id="username help" class="form-text text-muted">After registering, you need to change db values in order to access admin options.</small>
     </div>
     <div class="form-group">
         <label for="password">Password</label>

@@ -1,76 +1,82 @@
-{#without enctype=multipart/form data, file posting does not work#}
-<form role="form" action="{{ phpSelf }}" method="post" enctype="multipart/form-data">
+{# without enctype=multipart/form data, file posting does not work #}
+<form role="form" action="{{ phpSelf }}" method="post" enctype="multipart/form-data" class="page-properties">
     <div class="form-group">
-        <label for="siteName">Site name</label>
+        <label class="label-big" for="siteName">Site name</label>
         <textarea class="form-control" id="siteName" name="siteName" rows="1">{{ properties[3].value }}</textarea>
     </div>
     <div class="form-group">
-        <label for="siteSlogan">Slogan</label>
+        <label class="label-big" for="siteSlogan">Slogan</label>
         <textarea class="form-control" id="siteSlogan" name="siteSlogan" rows="1">{{ properties[6].value }}</textarea>
         <small id="sloganHelp" class="form-text text-muted">Something small but memorable</small>
     </div>
     <div class="form-group">
-        <label for="siteSlogan">Site information</label>
+        <label class="label-big" for="siteSlogan">Site information</label>
         <textarea class="form-control" id="siteInfo" name="siteInfo" rows="1">{{ properties[10].value }}</textarea>
         <small id="infoHelp" class="form-text text-muted">It will be displayed at the bottom left of the footer</small>
     </div>
     <div class="form-group">
-        <label for="siteColor">Site color</label>
-        <input name="siteColor" id="siteColor" type="color" value="{{properties[4].value }}">
-{#        <textarea class="form-control" id="siteColor" rows="1">{{ properties[4].value }}</textarea>#}
+        <label class="label-big" for="siteColor">Site color</label>
+        <input name="siteColor" id="siteColor" type="color" value="{{ properties[4].value }}">
+        {#        <textarea class="form-control" id="siteColor" rows="1">{{ properties[4].value }}</textarea> #}
         <small id="colorHelp" class="form-text text-muted">Be creative!</small>
     </div>
     <div class="form-group">
-        <label for="accentColor">Accent color</label>
-        <input name="accentColor" id="accentColor" type="color" value="{{properties[11].value }}">
+        <label class="label-big" for="accentColor">Accent color</label>
+        <input name="accentColor" id="accentColor" type="color" value="{{ properties[11].value }}">
         <small id="accentColorHelp" class="form-text text-muted">a shade of the primary color is recommended</small>
     </div>
     <div class="form-group">
-        <label for="logoToUpload">Logo</label>
+        <label class="label-big" for="logoToUpload">Logo</label>
         <input type="file" name="logoToUpload" id="logoUpload">
         <small id="logoHelp" class="form-text text-muted">150*100px recommended</small>
     </div>
     <div class="form-group">
-        <label for="contactMail">Email</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="{{ properties[2].value }}">
-        <small id="nameHelp" class="form-text text-muted">it will be displayed as contact information a the footer</small>
+        <label class="label-big" for="contactMail">Email</label>
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+               value="{{ properties[2].value }}">
+        <small id="nameHelp" class="form-text text-muted">it will be displayed as contact information a the
+            footer</small>
     </div>
     <div class="form-group">
-        <label for="contactMail">Address</label>
+        <label class="label-big" for="contactMail">Address</label>
         <textarea class="form-control" id="address" name="address" rows="1">{{ properties[7].value }}</textarea>
-        <small id="nameHelp" class="form-text text-muted">it will be displayed as contact information a the footer</small>
+        <small id="nameHelp" class="form-text text-muted">it will be displayed as contact information a the
+            footer</small>
     </div>
 
     <div class="form-group">
-        <label for="phone">Phone</label>
-        <textarea class="form-control" id="phone" name="phone" rows="1">{{ properties[9].value }}</textarea>
+        <label class="label-big" for="phone">Phone: </label>
+{#        <label class="form-check-label" for="phoneCheckBox">Visible</label>#}
         <input class="form-check-input" type="checkbox" id="phoneCheckBox" name="phoneCheckBox" value="1"
                 {% if properties[9].visibility == 1 %} checked {% endif %}>
-        <label class="form-check-label" for="phoneCheckBox">Visible</label>
+
+        <textarea class="form-control" id="phone" name="phone" rows="1">{{ properties[9].value }}</textarea>
     </div>
 
     <div class="form-group">
-        <label for="twitter">Twitter</label>
-        <textarea class="form-control" id="twitter" name="twitter" rows="1">{{ properties[8].value }}</textarea>
+        <label class="label-big" for="twitter">Twitter: </label>
+{#        <label class="form-check-label" for="twitterCheckBox">Visible</label>#}
         <input class="form-check-input" type="checkbox" id="twitterCheckBox" name="twitterCheckBox" value="1"
                 {% if properties[8].visibility == 1 %} checked {% endif %}>
-        <label class="form-check-label" for="twitterCheckBox">Visible</label>
+        <textarea class="form-control" id="twitter" name="twitter" rows="1">{{ properties[8].value }}</textarea>
     </div>
 
     <div class="form-group">
-        <label for="facebook">Facebook</label>
-        <textarea class="form-control" id="facebook" name="facebook" rows="1">{{ properties[0].value }}</textarea>
+        <label class="label-big" for="facebook">Facebook: </label>
+{#        <label class="form-check-label" for="facebookCheckBox">Visible</label>#}
         <input class="form-check-input" type="checkbox" id="facebookCheckBox" name="facebookCheckBox" value="1"
                 {% if properties[0].visibility == 1 %} checked {% endif %}>
-        <label class="form-check-label" for="facebookCheckBox">Visible</label>
+        <textarea class="form-control" id="facebook" name="facebook" rows="1">{{ properties[0].value }}</textarea>
     </div>
 
     <div class="form-group">
-        <label for="instagram">Instagram</label>
-        <textarea class="form-control" id="instagram" name="instagram" rows="1">{{ properties[1].value }}</textarea>
+        <label class="label-big" for="instagram">Instagram: </label>
+{#        <label class="form-check-label" for="instagramCheckBox">Visible</label>#}
         <input class="form-check-input" type="checkbox" id="instagramCheckBox" name="instagramCheckBox" value="1"
                 {% if properties[1].visibility == 1 %} checked {% endif %}>
-        <label class="form-check-label" for="instagramCheckBox">Visible</label>
+        <textarea class="form-control" id="instagram" name="instagram" rows="1">{{ properties[1].value }}</textarea>
+
+
     </div>
     <button name='editProperties'
             type="submit" class="btn btn-primary">Save changes
