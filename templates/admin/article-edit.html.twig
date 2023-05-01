@@ -37,7 +37,8 @@
     </div>
     <div class="edit-article-admin">
         <label for="imageToUpload">Image</label>
-        <input type="file" name="imageToUpload" id="imageUpload"></div>
+        <input type="file" name="imageToUpload" id="imageUpload"  accept=".jpg, .png, .jpeg, .gif, .png, .svg|image/*"></div>
+    <small id="imageToUpload" class="form-text text-muted">(file size up to 700kb with unique name) 450*1300px recommended</small>
     <div class="edit-article-admin"><input class="form-check-input" type="checkbox" id="promotedBox" name="promotedBox"
                                            value="1"
                 {% if article.promoted == 1 %} checked {% endif %}>

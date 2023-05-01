@@ -32,6 +32,7 @@
                 $_SESSION['accessLevel'] = $result[0]->access_level;
                 $_SESSION['username'] = $cleanUserName;
                 $_SESSION['id'] = $result[0]->id;
+                header("Location: /");
             } else{
                 $msg= "wrong pass";
             }
